@@ -18,21 +18,22 @@
         </nav>
     </header>
 
-    <div id="cart-sidebar" style="position: fixed; top: 0; right: -400px; width: 350px; height: 100%; background: #fff; box-shadow: -10px 0 30px rgba(0,0,0,0.05); z-index: 1000; transition: right 0.4s; padding: 30px; display: flex; flex-direction: column; border-left: 1px solid var(--border-color);">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+    <div id="cart-sidebar" style="position: fixed; top: 0; right: -400px; width: 350px; height: 100vh; background: #fff; box-shadow: -10px 0 30px rgba(0,0,0,0.05); z-index: 1000; transition: right 0.4s; padding: 25px; display: flex; flex-direction: column; border-left: 1px solid var(--border-color); box-sizing: border-box;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; flex-shrink: 0;">
             <h3 style="margin: 0; letter-spacing: 2px; font-weight: 400;">YOUR CART</h3>
-            <button onclick="toggleCart(false)" style="background: none; border: none; font-size: 20px; cursor: pointer;">&times;</button>
+            <button onclick="toggleCart(false)" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #111;">&times;</button>
         </div>
         
-        <div id="cart-items-list" style="flex: 1; overflow-y: auto; margin-top: 20px;">
+        <div id="cart-items-list" style="flex: 1; overflow-y: auto; margin-top: 15px; padding-right: 5px; max-height: calc(100vh - 220px);">
             </div>
 
-        <div style="border-top: 1px solid var(--border-color); padding-top: 20px;">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: 600;">
+        <div style="border-top: 1px solid var(--border-color); padding-top: 15px; margin-top: auto; flex-shrink: 0; background: #fff; width: 100%;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: 600;">
                 <span>TOTAL:</span>
                 <span id="cart-total-display">₹0.00</span>
             </div>
-            <button class="btn-luxury" style="width: 100%; padding: 15px; background: #25D366; color: #fff; border: none; font-weight: bold; letter-spacing: 1px;" onclick="sendOrderToWhatsApp()">
+            <button class="btn-luxury" style="width: 100%; padding: 14px; background: #25D366; color: #fff; border: none; font-weight: bold; letter-spacing: 1px; font-size: 13px; cursor: pointer; box-shadow: 0 4px 12px rgba(37,211,102,0.2); display: block;" onclick="sendOrderToWhatsApp()">
                 CONFIRM ORDER VIA WHATSAPP
             </button>
         </div>
@@ -53,50 +54,45 @@
         </p>
     </section>
 
-    <footer id="contact-section" style="background: #111111; color: #ffffff; padding: 60px 8% 40px 8%; border-top: 1px solid #222;">
-        <div style="display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px;">
+    <footer id="contact-section" style="background: #111111; color: #ffffff; padding: 60px 8% 40px 8%; border-top: 1px solid #222; box-sizing: border-box;">
+        <div style="display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px; align-items: flex-start;">
             
             <div style="flex: 1; min-width: 250px;">
                 <h3 style="letter-spacing: 3px; font-size: 18px; margin: 0 0 20px 0; font-weight: 500; color: var(--luxury-gold);">WATCH KINGDOM</h3>
                 <p style="color: #aaa; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">Premium Watch Gallery & Luxury Curator.</p>
-                
                 <p style="font-size: 15px; color: #fff; margin: 5px 0;"><strong>Phone / WhatsApp:</strong> +91 9099764589</p>
                 <p style="font-size: 15px; color: #fff; margin: 5px 0;"><strong>Instagram:</strong> @watchkingdom_official</p>
             </div>
 
             <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 12px;">
                 <h3 style="letter-spacing: 2px; font-size: 16px; margin: 0 0 10px 0; font-weight: 400; color: #fff;">OFFICIAL CHANNELS</h3>
-                
-                <a href="https://www.instagram.com/watchkingdom_official" target="_blank" style="color: #aaa; text-decoration: none; font-size: 14px; width: fit-content; transition: color 0.3s;" onmouseover="this.style.color='#b39246'" onmouseout="this.style.color='#aaa'">
-                    📸 Follow us on Instagram
-                </a>
-                
-                <a href="https://whatsapp.com/channel/0029VbCgZg65Ui2SM3g93K3f" target="_blank" style="color: #aaa; text-decoration: none; font-size: 14px; width: fit-content; transition: color 0.3s;" onmouseover="this.style.color='#b39246'" onmouseout="this.style.color='#aaa'">
-                    🟢 Join our WhatsApp Channel
-                </a>
-                
-                <a href="https://api.whatsapp.com/send?phone=9099764589&text=Hello%20Watch%20Kingdom%20Official!%20I%20have%20an%20inquiry." target="_blank" style="color: #aaa; text-decoration: none; font-size: 14px; width: fit-content; transition: color 0.3s;" onmouseover="this.style.color='#b39246'" onmouseout="this.style.color='#aaa'">
-                    💬 Direct WhatsApp Chat
-                </a>
+                <a href="https://www.instagram.com/watchkingdom_official" target="_blank" style="color: #aaa; text-decoration: none; font-size: 14px; width: fit-content; transition: color 0.3s;" onmouseover="this.style.color='#b39246'" onmouseout="this.style.color='#aaa'">📸 Follow us on Instagram</a>
+                <a href="https://whatsapp.com/channel/0029VbCgZg65Ui2SM3g93K3f" target="_blank" style="color: #aaa; text-decoration: none; font-size: 14px; width: fit-content; transition: color 0.3s;" onmouseover="this.style.color='#b39246'" onmouseout="this.style.color='#aaa'">🟢 Join our WhatsApp Channel</a>
+                <a href="https://api.whatsapp.com/send?phone=9099764589&text=Hello%20Watch%20Kingdom%20Official!%20I%20have%20an%20inquiry." target="_blank" style="color: #aaa; text-decoration: none; font-size: 14px; width: fit-content; transition: color 0.3s;" onmouseover="this.style.color='#b39246'" onmouseout="this.style.color='#aaa'">💬 Direct WhatsApp Chat</a>
             </div>
 
-            <div style="flex: 0.8; min-width: 200px; text-align: center; background: #1a1a1a; padding: 20px; border: 1px solid #222;">
+            <div style="flex: 0.8; min-width: 220px; text-align: center; background: #1a1a1a; padding: 20px; border: 1px solid #222; display: block !important; opacity: 1 !important; visibility: visible !important;">
                 <h4 style="margin: 0 0 15px 0; font-size: 13px; letter-spacing: 1px; color: var(--luxury-gold); font-weight: 500;">SCAN TO FOLLOW</h4>
-                <img src="{{ url_for('static', filename='images/instagram_qr.png') }}" alt="Instagram QR" style="width: 120px; height: 120px; object-fit: contain; background: #fff; padding: 5px;">
+                <img src="/static/images/instagram_qr.png" alt="Instagram QR" style="width: 130px; height: 130px; display: inline-block !important; background: #fff; padding: 6px; box-sizing: border-box; border-radius: 4px;">
                 <p style="font-size: 11px; color: #666; margin: 10px 0 0 0; letter-spacing: 1px;">@WATCHKINGDOM_OFFICIAL</p>
             </div>
 
         </div>
 
         <hr style="border: 0; border-top: 1px solid #222; margin-bottom: 20px;">
-        <p style="text-align: center; font-size: 12px; color: #555; margin: 0; letter-spacing: 1px;">&copy; 2026 WATCH KINGDOM OFFICIAL. MR. RUSHIKESH PRAJAPATI All Timeless Rights Reserved.</p>
+        <p style="text-align: center; font-size: 12px; color: #555; margin: 0; letter-spacing: 1px;">&copy; 2026 WATCH KINGDOM OFFICIAL. All Timeless Rights Reserved.</p>
     </footer>
 
     <script>
         let currentCartData = { items: [], total: 0 };
 
         function toggleCart(open) {
-            document.getElementById('cart-sidebar').style.right = open ? '0px' : '-400px';
+            const sidebar = document.getElementById('cart-sidebar');
+            if(window.innerWidth <= 768) {
+                sidebar.style.right = open ? '0px' : '-100%';
+            } else {
+                sidebar.style.right = open ? '0px' : '-400px';
+            }
             if(open) updateCartUI();
         }
 
@@ -129,10 +125,10 @@
                         container.innerHTML += `
                             <div style="display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #f9f9f9; padding-bottom: 10px;">
                                 <div>
-                                    <h4 style="margin: 0 0 5px 0; font-weight: 400; font-size: 14px;">${item.name}</h4>
+                                    <h4 style="margin: 0 0 5px 0; font-weight: 400; font-size: 14px; color: #111;">${item.name}</h4>
                                     <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Qty: ${item.quantity}</p>
                                 </div>
-                                <span style="font-size: 14px; font-weight: 500;">₹${(item.price * item.quantity).toLocaleString('en-IN')}</span>
+                                <span style="font-size: 14px; font-weight: 500; color: #111;">₹${(item.price * item.quantity).toLocaleString('en-IN')}</span>
                             </div>
                         `;
                     });
