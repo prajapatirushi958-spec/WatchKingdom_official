@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero">
+    <h1>THE ART OF HOROLOGY</h1>
+    <p style="color: var(--text-muted); letter-spacing: 2px; font-size: 14px; font-weight: 300; text-transform: uppercase;">Curated Luxury Timepieces for the Modern Kingdom</p>
+</section>
+
+<div class="controls-section">
+    <div>
+        <button class="filter-btn {% if not selected_category %}active{% endif %}" onclick="window.location.href='/'">All Masterpieces</button>
+        <button class="filter-btn {% if selected_category == 'Classic' %}active{% endif %}" onclick="window.location.href='/?category=Classic'">Classic</button>
+        <button class="filter-btn {% if selected_category == 'Sport' %}active{% endif %}" onclick="window.location.href='/?category=Sport'">Sport</button>
+        <button class="filter-btn {% if selected_category == 'Diver' %}active{% endif %}" onclick="window.location.href='/?category=Diver'">Diver</button>
+    </div>
+    
+    <form action="/" method="GET" style="display: flex; gap: 5px;">
+        <input type="text" name="search" class="search-input" placeholder="Search collection...">
+        <button type="submit" class="btn-luxury" style="padding: 10px 15px;">Find</button>
+    </form>
+</div>
+
+<section class="product-grid">
+    {% for product in products %}
+    <div class="product-card">
+        
+        <div class="product-image-holder" style="height: 280px; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+            <img src="{{ url_for('static', filename='images/' + product.images[0]) }}" style="max-height: 90%; max-width: 90%; object-fit: contain;">
+        </div>
+
+        <div class="product-brand">{{ product.brand }}</div>
+        <h3 class="product-name" style="font-size: 18px; font-weight: 400; color: var(--text-main); margin: 10px 0;">{{ product.name }}</h3>
+        <p class="product-price" style="font-weight: 600; color: var(--text-main); margin-bottom: 15px;">₹{{ "{:,.2f}".format(product.price) }}</p>
+        
+        <div style="display: flex; justify-content: center; gap: 10px; padding: 0 20px;">
+            <a href="/product/{{ product.id }}" style="text-decoration: none; flex: 1;">
+                <button class="btn-luxury" style="background: transparent; border: 1px solid var(--text-main); color: var(--text-main); width: 100%;">View</button>
+            </a>
+            <button class="btn-luxury" style="flex: 1;" onclick="addToCart({{ product.id }})">Buy</button>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock %} 

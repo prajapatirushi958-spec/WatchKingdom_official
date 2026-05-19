@@ -1,0 +1,181 @@
+/* static/css/style.css */
+:root {
+    --bg-main: #fcfcfc;
+    --bg-card: #ffffff;
+    --border-color: #e5e5e5;
+    --text-main: #111111;
+    --text-muted: #666666;
+    --luxury-gold: #b39246; /* Elegant Platinum/Champagne Gold */
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--luxury-gold);
+}
+
+/* Premium Hero */
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+    background: radial-gradient(circle, #ffffff 0%, #f7f7f7 100%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.hero h1 {
+    font-size: 52px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin: 0 0 15px 0;
+    color: #111;
+}
+
+/* Search & Filters Section */
+.controls-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 8% 10px 8%;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.search-input {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    width: 250px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: var(--luxury-gold);
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    border-color: var(--text-main);
+    background: var(--text-main);
+    color: #fff;
+}
+
+/* Luxury Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 30px 8% 80px 8%;
+}
+
+.product-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 0 0 25px 0;
+    text-align: center;
+    transition: box-shadow 0.4s, transform 0.3s;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.product-image-holder {
+    height: 280px;
+    background: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color);
+    color: #bbb;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.product-brand {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--luxury-gold);
+    text-transform: uppercase;
+    margin: 20px 0 5px 0;
+    font-weight: 600;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-main);
+    margin: 0 0 10px 0;
+    padding: 0 15px;
+}
+
+.product-price {
+    color: var(--text-main);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.btn-luxury {
+    background: var(--text-main);
+    color: #ffffff;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.btn-luxury:hover {
+    background: var(--luxury-gold);
+} 

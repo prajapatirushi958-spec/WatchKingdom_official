@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Kingdom Official</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">WATCH KINGDOM</a>
+        <nav>
+            <a href="/">Collections</a>
+            <a href="#about-section">Our Story</a>
+            <a href="#contact-section">Contact Us</a>
+            <a href="#" onclick="toggleCart(true)" style="color: var(--luxury-gold); font-weight: bold;">Cart (<span id="cart-counter">0</span>)</a>
+        </nav>
+    </header>
+
+    <div id="cart-sidebar" style="position: fixed; top: 0; right: -400px; width: 350px; height: 100%; background: #fff; box-shadow: -10px 0 30px rgba(0,0,0,0.05); z-index: 1000; transition: right 0.4s; padding: 30px; display: flex; flex-direction: column; border-left: 1px solid var(--border-color);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+            <h3 style="margin: 0; letter-spacing: 2px; font-weight: 400;">YOUR CART</h3>
+            <button onclick="toggleCart(false)" style="background: none; border: none; font-size: 20px; cursor: pointer;">&times;</button>
+        </div>
+        
+        <div id="cart-items-list" style="flex: 1; overflow-y: auto; margin-top: 20px;">
+            </div>
+
+        <div style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 20px; font-weight: 600;">
+                <span>TOTAL:</span>
+                <span id="cart-total-display">₹0.00</span>
+            </div>
+            <button class="btn-luxury" style="width: 100%; padding: 15px; background: #25D366; color: #fff; border: none; font-weight: bold; letter-spacing: 1px;" onclick="sendOrderToWhatsApp()">
+                CONFIRM ORDER VIA WHATSAPP
+            </button>
+        </div>
+    </div>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <section id="about-section" style="background: #fdfdfd; padding: 80px 8%; border-top: 1px solid var(--border-color); text-align: center;">
+        <p style="color: var(--luxury-gold); letter-spacing: 4px; font-size: 13px; font-weight: 600; margin: 0 0 15px 0;">OUR STORY</p>
+        <h2 style="font-size: 32px; font-weight: 300; letter-spacing: 2px; margin: 0 0 25px 0; color: #111;">WELCOME TO WATCH KINGDOM</h2>
+        <p style="max-width: 800px; margin: 0 auto; color: var(--text-muted); line-height: 1.8; font-size: 16px;">
+            Watch Kingdom Official is your ultimate destination for premium, high-quality, and timeless luxury timepieces. 
+            We specialize in bringing the finest designs, classic chronographs, automatic masterworks, and modern collector's editions 
+            straight to your collection. Every watch we showcase speaks of supreme craftsmanship, uncompromised quality, 
+            and a legacy of luxury that fits perfectly on your wrist. Step into the kingdom of fine horology today.
+        </p>
+    </section>
+
+    <footer id="contact-section" style="background: #111111; color: #ffffff; padding: 60px 8% 40px 8%; border-top: 1px solid #222;">
+        <div style="display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; margin-bottom: 40px;">
+            
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="letter-spacing: 3px; font-size: 18px; margin: 0 0 20px 0; font-weight: 500; color: var(--luxury-gold);">WATCH KINGDOM</h3>
+                <p style="color: #aaa; font-size: 14px; line-height: 1.6; margin-bottom: 20px;">Premium Watch Gallery & Luxury Curator.</p>
+                
+                <p style="font-size: 15px; color: #fff; margin: 5px 0;"><strong>Phone / WhatsApp:</strong> +91 9099764589</p>
+                <p style="font-size: 15px; color: #fff; margin: 5px 0;"><strong>Instagram:</strong> @watchkingdom_official</p>
+            </div>
+
+            <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 12px;">
+                <h3 style="letter-spacing: 2px; font-size: 16px; margin: 0 0 10px 0; font-weight: 400; color: #fff;">OFFICIAL CHANNELS</h3>
+                
+                <a href="https://www.instagram.com/watchkingdom_official" target="_blank" style="color: #aaa; text-decoration: none; font-size: 14px; width: fit-content; transition: color 0.3s;" onmouseover="this.style.color='#b39246'" onmouseout="this.style.color='#aaa'">
+                    📸 Follow us on Instagram
+                </a>
+                
+                <a href="https://whatsapp.com/channel/0029VbCgZg65Ui2SM3g93K3f" target="_blank" style="color: #aaa; text-decoration: none; font-size: 14px; width: fit-content; transition: color 0.3s;" onmouseover="this.style.color='#b39246'" onmouseout="this.style.color='#aaa'">
+                    🟢 Join our WhatsApp Channel
+                </a>
+                
+                <a href="https://api.whatsapp.com/send?phone=9099764589&text=Hello%20Watch%20Kingdom%20Official!%20I%20have%20an%20inquiry." target="_blank" style="color: #aaa; text-decoration: none; font-size: 14px; width: fit-content; transition: color 0.3s;" onmouseover="this.style.color='#b39246'" onmouseout="this.style.color='#aaa'">
+                    💬 Direct WhatsApp Chat
+                </a>
+            </div>
+
+            <div style="flex: 0.8; min-width: 200px; text-align: center; background: #1a1a1a; padding: 20px; border: 1px solid #222;">
+                <h4 style="margin: 0 0 15px 0; font-size: 13px; letter-spacing: 1px; color: var(--luxury-gold); font-weight: 500;">SCAN TO FOLLOW</h4>
+                <img src="{{ url_for('static', filename='images/instagram_qr.png') }}" alt="Instagram QR" style="width: 120px; height: 120px; object-fit: contain; background: #fff; padding: 5px;">
+                <p style="font-size: 11px; color: #666; margin: 10px 0 0 0; letter-spacing: 1px;">@WATCHKINGDOM_OFFICIAL</p>
+            </div>
+
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #222; margin-bottom: 20px;">
+        <p style="text-align: center; font-size: 12px; color: #555; margin: 0; letter-spacing: 1px;">&copy; 2026 WATCH KINGDOM OFFICIAL. MR. RUSHIKESH PRAJAPATI All Timeless Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let currentCartData = { items: [], total: 0 };
+
+        function toggleCart(open) {
+            document.getElementById('cart-sidebar').style.right = open ? '0px' : '-400px';
+            if(open) updateCartUI();
+        }
+
+        function addToCart(productId) {
+            fetch('/api/cart/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: productId })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success) {
+                    document.getElementById('cart-counter').innerText = data.cart_count;
+                    toggleCart(true);
+                }
+            });
+        }
+
+        function updateCartUI() {
+            fetch('/api/cart/get')
+            .then(res => res.json())
+            .then(data => {
+                currentCartData = data;
+                const container = document.getElementById('cart-items-list');
+                container.innerHTML = '';
+                if(data.items.length === 0) {
+                    container.innerHTML = '<p style="color: var(--text-muted); text-align: center; margin-top: 50px;">Cart is empty.</p>';
+                } else {
+                    data.items.forEach(item => {
+                        container.innerHTML += `
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #f9f9f9; padding-bottom: 10px;">
+                                <div>
+                                    <h4 style="margin: 0 0 5px 0; font-weight: 400; font-size: 14px;">${item.name}</h4>
+                                    <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Qty: ${item.quantity}</p>
+                                </div>
+                                <span style="font-size: 14px; font-weight: 500;">₹${(item.price * item.quantity).toLocaleString('en-IN')}</span>
+                            </div>
+                        `;
+                    });
+                }
+                document.getElementById('cart-total-display').innerText = '₹' + data.total.toLocaleString('en-IN');
+            });
+        }
+
+        function sendOrderToWhatsApp() {
+            if (currentCartData.items.length === 0) {
+                alert("Bhai, cart khali hai! Pehle koi watch add karo.");
+                return;
+            }
+
+            const whatsappNumber = "9099764589";
+            
+            let message = `👑 *WATCH KINGDOM OFFICIAL - NEW ORDER* 👑\n`;
+            message += `------------------------------------------\n\n`;
+            message += `📄 *INVOICE / BILL DETAILS:*\n\n`;
+
+            currentCartData.items.forEach((item, index) => {
+                message += `${index + 1}. *${item.name}*\n`;
+                message += `   Quantity: ${item.quantity}\n`;
+                message += `   Price: ₹${item.price.toLocaleString('en-IN')} each\n`;
+                message += `   Subtotal: ₹${(item.price * item.quantity).toLocaleString('en-IN')}\n\n`;
+            });
+
+            message += `------------------------------------------\n`;
+            message += `💰 *GRAND TOTAL:* ₹${currentCartData.total.toLocaleString('en-IN')}\n`;
+            message += `------------------------------------------\n\n`;
+            message += `👉 *Please confirm my delivery details for shipping.*`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const universalLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            const link = document.createElement('a');
+            link.href = universalLink;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

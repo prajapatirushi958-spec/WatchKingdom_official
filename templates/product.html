@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="display: flex; max-width: 1200px; margin: 60px auto; padding: 0 40px; gap: 70px; flex-wrap: wrap;">
+    
+    <div style="flex: 1.2; min-width: 350px; display: flex; flex-direction: column; gap: 20px;">
+        
+        <div style="background: #ffffff; height: 480px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+            <img id="main-product-img" src="{{ url_for('static', filename='images/' + product.images[0]) }}" style="max-height: 95%; max-width: 95%; object-fit: contain; transition: opacity 0.2s ease-in-out;">
+        </div>
+
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            {% for img_name in product.images %}
+            <div style="width: 80px; height: 80px; border: 1px solid var(--border-color); background: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; transition: all 0.3s;" 
+                 onclick="changeMainImage('{{ url_for('static', filename='images/' + img_name) }}', this)" 
+                 class="thumbnail-box">
+                <img src="{{ url_for('static', filename='images/' + img_name) }}" style="max-height: 90%; max-width: 90%; object-fit: contain;">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div style="flex: 1; min-width: 320px; display: flex; flex-direction: column; justify-content: center;">
+        <p style="color: var(--luxury-gold); letter-spacing: 4px; margin: 0; font-size: 13px; font-weight: 600;">{{ product.brand|upper }}</p>
+        <h1 style="font-size: 36px; font-weight: 300; margin: 15px 0 10px 0; letter-spacing: 1px; line-height: 1.2; color: var(--text-main);">{{ product.name }}</h1>
+        <p style="font-size: 24px; font-weight: 500; color: var(--text-main); margin: 0 0 25px 0;">₹{{ "{:,.2f}".format(product.price) }}</p>
+        
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 25px;">
+        
+        <p style="color: var(--text-muted); line-height: 1.8; font-size: 15px; margin-bottom: 25px;">{{ product.desc }}</p>
+        
+        <div style="background: #f7f7f7; padding: 20px; border-left: 3px solid var(--luxury-gold); margin-bottom: 35px;">
+            <span style="font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); font-weight: 600;">Specifications</span>
+            <p style="margin: 8px 0 0 0; font-size: 14px; color: var(--text-main); font-weight: 500;">{{ product.specs }}</p>
+        </div>
+        
+        <button class="btn-luxury" style="padding: 18px; font-weight: bold;" onclick="addToCart({{ product.id }})">Add To Premium Cart</button>
+        <a href="/" style="color: var(--text-muted); text-decoration: none; font-size: 13px; margin-top: 20px; text-align: center; letter-spacing: 1px;">← Return to Gallery</a>
+    </div>
+</div>
+
+<script>
+    function changeMainImage(imgUrl, clickedThumbnail) {
+        const mainImg = document.getElementById('main-product-img');
+        
+        // Smooth fade out
+        mainImg.style.opacity = '0.2';
+        
+        setTimeout(() => {
+            // Image change karna
+            mainImg.src = imgUrl;
+            // Smooth fade in
+            mainImg.style.opacity = '1';
+        }, 150);
+        
+        // Sabhi extra image boxes se active border hatana
+        const thumbs = document.querySelectorAll('.thumbnail-box');
+        thumbs.forEach(t => {
+            t.style.borderColor = 'var(--border-color)';
+            t.style.transform = 'scale(1)';
+        });
+        
+        // Selected waale box par dark border aur thoda zoom dena
+        clickedThumbnail.style.borderColor = 'var(--text-main)';
+        clickedThumbnail.style.transform = 'scale(1.05)';
+    }
+
+    // Page load hote hi pehli extra image ko automatic dark border dena
+    window.addEventListener('DOMContentLoaded', () => {
+        const firstThumb = document.querySelector('.thumbnail-box');
+        if(firstThumb) {
+            firstThumb.style.borderColor = 'var(--text-main)';
+        }
+    });
+</script>
+
+{% endblock %}
