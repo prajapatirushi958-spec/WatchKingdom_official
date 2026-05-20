@@ -252,6 +252,13 @@
             align-items: center;
             z-index: 5000;
             font-family: Arial, sans-serif;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s; /* Smooth Hide Transition */
+        }
+        /* Class to hide the button when cart or modal is open */
+        .hide-whatsapp-button {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
         }
         .whatsapp-short-msg {
             background: #111111;
@@ -332,7 +339,7 @@
         }
     </style>
 
-    <div class="floating-whatsapp-container">
+    <div id="master-whatsapp-float" class="floating-whatsapp-container">
         <div id="whatsapp-popup-text" class="whatsapp-short-msg">⌚ See Today's Live Stock!</div>
         
         <a href="https://whatsapp.com/channel/0029VbCgZg65Ui2SM3g93K3f" target="_blank" class="whatsapp-luxury-btn">
@@ -352,22 +359,49 @@
         ];
         let currentMsgIdx = 0;
         const msgPopupBox = document.getElementById('whatsapp-popup-text');
+        const whatsappMasterBtn = document.getElementById('master-whatsapp-float');
 
         function startPopUpCycle() {
-            msgPopupBox.innerText = shortMessages[currentMsgIdx];
-            msgPopupBox.classList.add('show-msg');
+            // Only slide message if the entire button is currently visible
+            if (!whatsappMasterBtn.classList.contains('hide-whatsapp-button')) {
+                msgPopupBox.innerText = shortMessages[currentMsgIdx];
+                msgPopupBox.classList.add('show-msg');
 
-            setTimeout(() => {
-                msgPopupBox.classList.remove('show-msg');
-                currentMsgIdx = (currentMsgIdx + 1) % shortMessages.length;
-            }, 4000); // Bubble displays for 4 seconds
+                setTimeout(() => {
+                    msgPopupBox.classList.remove('show-msg');
+                    currentMsgIdx = (currentMsgIdx + 1) % shortMessages.length;
+                }, 4000);
+            }
         }
 
-        // Trigger loop every 8 seconds (First pop up starts after 3 seconds)
         setTimeout(() => {
             startPopUpCycle();
             setInterval(startPopUpCycle, 8000);
         }, 3000);
-    </script>
-</body>
+
+        // EXTRA INTELLIGENCE: MONITORING NO-OVERLAP FOR CHECKOUT BUTTONS
+        // MutationObserver watches if Cart Panel or Checkout form is open and instantly hides the float button
+        const observerTarget = document.body;
+        const config = { attributes: true, subtree: true, attributeFilter: ['style'] };
+
+        const checkOverlapStatus = () => {
+            const sidebar = document.getElementById('cart-sidebar');
+            const modal = document.getElementById('checkout-modal');
+            
+            // Check if cart is slid open (right is 0px) or modal is visible (display flex)
+            const isCartOpen = sidebar && sidebar.style.right === '0px';
+            const isModalOpen = modal && modal.style.display === 'flex';
+
+            if (isCartOpen || isModalOpen) {
+                whatsappMasterBtn.classList.add('hide-whatsapp-button');
+                msgPopupBox.classList.remove('show-msg'); // Instantly pull back any active text bubble
+            } else {
+                whatsappMasterBtn.classList.remove('hide-whatsapp-button');
+            }
+        };
+
+        const observer = new MutationObserver(checkOverlapStatus);
+        observer.observe(observerTarget, config);
+    </script> 
+    </body>
 </html> 
