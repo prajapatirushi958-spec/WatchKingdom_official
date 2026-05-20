@@ -48,7 +48,40 @@ WATCHES_DATA = [
         # Isme bhi extra images ke naam dalo (Mene example ke liye image4, 5, 6 likha hai)
         'images': ['mk1.jpeg', 'mk2.jpeg', 'mk3.jpeg','mk4.jpeg','mk5.jpeg'], 
         'category': 'Diver'
-    }
+    },
+    {
+        'id':5 , 
+        'name': 'Casio Edifice Chronograph ', 
+        'brand': 'Casio Edifice', 
+        'price': 1299, 
+        'desc': 'Premium luxury steel sports watch with an iconic octagonal bezel.',
+        'specs': '41mm Dial | Automatic Movement | Stainless Steel | All Chrono Working | New Model |  ',
+        
+        'images': ['casio1.jpeg', 'casio2.jpeg'], 
+        'category': 'Sport'
+    },
+{
+        'id':6 , 
+        'name': 'Seiko 5 Sports Automatic ', 
+        'brand': 'Seiko', 
+        'price': 2199, 
+        'desc': 'Premium luxury steel sports watch with an iconic octagonal bezel.',
+        'specs': '41mm Dial | Automatic Movement | Strong Belt | All Chrono Working | New Model |  ',
+        
+        'images': ['seiko1.jpeg', 'seiko2.jpeg','seiko3.jpeg','seiko4.jpeg'], 
+        'category': 'Sport'
+    },
+{
+        'id':7 , 
+        'name': 'Emporio Armani Classic ', 
+        'brand': 'Emporio Armani', 
+        'price': 1299, 
+        'desc': 'Premium luxury steel sports watch with an iconic octagonal bezel.',
+        'specs': '41mm Dial | Strong Build Quality | Stainless Steel | All Chrono Working | Classic Model |  ',
+        
+        'images': ['ea1.jpeg', 'ea2.jpeg','ea3.jpeg','ea4.jpeg'], 
+        'category': 'Classic'
+    },
 
 ]
 
