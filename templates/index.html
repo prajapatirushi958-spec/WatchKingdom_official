@@ -1,18 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-<section class="hero" style="padding: 60px 20px 30px 20px; text-align: center;">
-    <h1>THE ART OF HOROLOGY</h1>
-    <p style="color: var(--text-muted); letter-spacing: 2px; font-size: 14px; font-weight: 300; text-transform: uppercase;">Curated Luxury Timepieces for the Modern Kingdom</p>
+<div class="announcement-bar">
+    <div class="announcement-text">🔥 FEW IN STOCK. ELITE DESIGNS. BUILT TO IMPRESS.</div>
+    <div class="announcement-text">🟢 JOIN OUR WHATSAPP CHANNEL FOR LIVE stock updates.</div>
+    <div class="announcement-text">✈️ FREE SECURE PAN-INDIA DELIVERY ON ALL REIGNS.</div>
+</div>
+
+<section class="hero" style="padding: 80px 20px 40px 20px; text-align: center; background: radial-gradient(circle, #fafafa 0%, #ffffff 100%);">
+    <h1 style="font-size: 42px; font-weight: 300; letter-spacing: 6px; margin-bottom: 10px;">THE ART OF HOROLOGY</h1>
+    <p style="color: var(--text-muted); letter-spacing: 3px; font-size: 13px; font-weight: 300; text-transform: uppercase;">Curated Luxury Timepieces for the Modern Kingdom</p>
 </section>
 
-<section style="max-width: 1100px; margin: 0 auto 50px auto; padding: 30px; background: #fdfdfd; border: 1px solid var(--border-color); border-left: 4px solid var(--luxury-gold); text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.01);">
+<section style="max-width: 1100px; margin: 0 auto 50px auto; padding: 30px; background: #ffffff; border: 1px solid var(--border-color); border-left: 4px solid var(--luxury-gold); text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
     <span style="color: var(--luxury-gold); letter-spacing: 3px; font-size: 11px; font-weight: 600; text-transform: uppercase;">⚡ Live Catalog Updates</span>
     <h2 style="font-size: 24px; font-weight: 300; margin: 10px 0 15px 0; letter-spacing: 1px; color: var(--text-main);">Want to Explore Our Complete Live Stock?</h2>
     <p style="max-width: 750px; margin: 0 auto 25px auto; color: var(--text-muted); line-height: 1.6; font-size: 15px;">
-        Explore More With Us
-Discover limited premium masterworks on our website.
-Join our official channels for daily stock updates, real customer reviews, unboxing videos, and exclusive collections.
+        Website par humare limited premium masterworks hain. Humara daily naya stock, customer reviews, unboxing videos aur exclusive collection dekhne ke liye humare official channels ko abhi join karein.
     </p>
     
     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
@@ -21,7 +25,6 @@ Join our official channels for daily stock updates, real customer reviews, unbox
                 🟢 VIEW FULL STOCK ON WHATSAPP
             </button>
         </a>
-        
         <a href="https://www.instagram.com/watchkingdom_official" target="_blank" style="text-decoration: none;">
             <button class="btn-luxury" style="background: transparent; border: 1px solid var(--text-main); color: var(--text-main); padding: 14px 28px; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='var(--text-main)'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='var(--text-main)';">
                 📸 FOLLOW INSTAGRAM FOR LIVE VIDEOS
@@ -30,7 +33,7 @@ Join our official channels for daily stock updates, real customer reviews, unbox
     </div>
 </section>
 
-<div class="controls-section" style="max-width: 1100px; margin: 0 auto 30px auto;">
+<div class="controls-section" style="max-width: 1100px; margin: 0 auto 30px auto; padding: 0 10px;">
     <div>
         <button class="filter-btn {% if not selected_category %}active{% endif %}" onclick="window.location.href='/'">All Masterpieces</button>
         <button class="filter-btn {% if selected_category == 'Classic' %}active{% endif %}" onclick="window.location.href='/?category=Classic'">Classic</button>
@@ -47,19 +50,26 @@ Join our official channels for daily stock updates, real customer reviews, unbox
 <section class="product-grid" style="max-width: 1100px; margin: 0 auto 60px auto;">
     {% for product in products %}
     <div class="product-card">
-        <div class="product-image-holder" style="height: 280px; background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--border-color);">
+        
+        <div class="discount-tag">SAVE 33%</div>
+
+        <div class="product-image-holder" style="background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--border-color);">
             <img src="{{ url_for('static', filename='images/' + product.images[0]) }}" style="max-height: 90%; max-width: 90%; object-fit: contain;">
         </div>
 
-        <div class="product-brand">{{ product.brand }}</div>
-        <h3 class="product-name" style="font-size: 18px; font-weight: 400; color: var(--text-main); margin: 10px 0;">{{ product.name }}</h3>
-        <p class="product-price" style="font-weight: 600; color: var(--text-main); margin-bottom: 15px;">₹{{ "{:,.2f}".format(product.price) }}</p>
+        <div class="product-brand" style="margin-top: 15px;">{{ product.brand }}</div>
+        <h3 class="product-name" style="font-weight: 400; color: var(--text-main);">{{ product.name }}</h3>
         
-        <div style="display: flex; justify-content: center; gap: 10px; padding: 0 20px;">
+        <p class="product-price" style="font-weight: 600; color: var(--text-main); margin-bottom: 15px;">
+            <span style="font-size: 13px; font-weight: 400; color: #999; text-decoration: line-through; margin-right: 8px;">₹{{ "{:,.2f}".format(product.price * 1.5) }}</span>
+            ₹{{ "{:,.2f}".format(product.price) }}
+        </p>
+        
+        <div style="display: flex; justify-content: center; gap: 10px; padding: 0 10px; margin-bottom: 5px;">
             <a href="/product/{{ product.id }}" style="text-decoration: none; flex: 1;">
-                <button class="btn-luxury" style="background: transparent; border: 1px solid var(--text-main); color: var(--text-main); width: 100%;">View</button>
+                <button class="btn-luxury" style="background: transparent; border: 1px solid var(--text-main); color: var(--text-main); width: 100%;">VIEW</button>
             </a>
-            <button class="btn-luxury" style="flex: 1;" onclick="addToCart({{ product.id }})">Buy</button>
+            <button class="btn-luxury" style="flex: 1;" onclick="addToCart({{ product.id }})">BUY</button>
         </div>
     </div>
     {% endfor %}
