@@ -133,7 +133,7 @@ WATCHES_DATA = [
         'brand': 'RADO', 
         'price': 1250, 
         'desc': 'Premium luxury steel Classic watch.',
-        'specs':  | Automatic Movement | Strong Belt | All Chrono Working | Trending  |  ',
+        'specs': 'Automatic Movement | Strong Belt | All Chrono Working | Trending  |  ',
         
         'images': ['rado1.jpeg', 'rado2.jpeg'], 
         'category': 'Classic'
