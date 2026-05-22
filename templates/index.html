@@ -11,7 +11,305 @@
     <h1 style="font-size: 42px; font-weight: 300; letter-spacing: 6px; margin-bottom: 10px;">THE ART OF HOROLOGY</h1>
     <p style="color: var(--text-muted); letter-spacing: 3px; font-size: 13px; font-weight: 300; text-transform: uppercase;">Curated Luxury Timepieces for the Modern Kingdom</p>
 </section>
+<style>
+    /* Stories Horizontal Tray Container */
+    .instagram-stories-tray {
+        display: flex;
+        gap: 22px;
+        max-width: 1100px;
+        margin: 0 auto 40px auto;
+        padding: 10px 20px;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    /* Hide scrollbar for clean appearance */
+    .instagram-stories-tray::-webkit-scrollbar {
+        display: none;
+    }
+    /* Individual Story Item Layout */
+    .story-node {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        width: 84px;
+        text-align: center;
+    }
+    /* Dynamic Luxury Glowing Gradient Ring Frame */
+    .story-ring-frame {
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #b39246, #f1e4c3, #96742b, #b39246);
+        background-size: 300% 300%;
+        animation: premiumGlowRing 4s ease infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px;
+        box-sizing: border-box;
+        box-shadow: 0 4px 15px rgba(179,146,70,0.15);
+    }
+    @keyframes premiumGlowRing {
+        0%{background-position:0% 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0% 50%}
+    }
+    /* Inside Profile Photo Circle Frame */
+    .story-circle-profile {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: #000;
+        border: 2.5px solid #ffffff;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .story-circle-profile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    /* Story Text Title Badge */
+    .story-caption-label {
+        margin-top: 8px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #111111;
+    }
 
+    /* 🎥 MODERN FULL-SCREEN INSTA REELS VIEWER MODAL PANEL */
+    .insta-viewer-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.95);
+        z-index: 9999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    .insta-viewer-wrapper {
+        width: 100%;
+        max-width: 420px;
+        height: 100%;
+        max-height: 85vh;
+        background: #000;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+    }
+    @media (max-width: 500px) {
+        .insta-viewer-wrapper {
+            max-height: 100vh;
+            border-radius: 0px;
+        }
+    }
+    /* Video Element Configuration */
+    .insta-story-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #000;
+    }
+    /* Top Progress Bar Matrix */
+    .story-progress-timeline {
+        position: absolute;
+        top: 15px;
+        left: 10px;
+        right: 10px;
+        height: 3px;
+        background: rgba(255,255,255,0.3);
+        border-radius: 2px;
+        overflow: hidden;
+        z-index: 100;
+    }
+    .story-progress-indicator {
+        height: 100%;
+        width: 0%;
+        background: #ffffff;
+        transition: width 0.1s linear;
+    }
+    /* Floating Header inside Story Player */
+    .story-viewer-header {
+        position: absolute;
+        top: 28px;
+        left: 15px;
+        right: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+    }
+    .story-brand-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+    }
+    .story-mini-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid var(--luxury-gold);
+    }
+    .story-brand-title {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .story-close-trigger {
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-size: 28px;
+        cursor: pointer;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    /* Bottom CTA Panel Action Button */
+    .story-bottom-action-tray {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        z-index: 100;
+        text-align: center;
+    }
+</style>
+
+<div class="instagram-stories-tray">
+    
+    <div class="story-node" onclick="triggerInstaStory('/static/videos/rolex_story.mp4', 'ROLEX LIVE BATCH')">
+        <div class="story-ring-frame">
+            <div class="story-circle-profile">
+                <img src="/static/images/instagram.jpg" alt="Rolex Hub">
+            </div>
+        </div>
+        <span class="story-caption-label">Rolex Live</span>
+    </div>
+
+    <div class="story-node" onclick="triggerInstaStory('/static/videos/ap_story.mp4', 'AP MASTERPIECE')">
+        <div class="story-ring-frame">
+            <div class="story-circle-profile">
+                <img src="/static/images/instagram.jpg" alt="AP Hub">
+            </div>
+        </div>
+        <span class="story-caption-label">AP Royal</span>
+    </div>
+
+    <div class="story-node" onclick="triggerInstaStory('/static/videos/hublot_story.mp4', 'HUBLOT CHRONO')">
+        <div class="story-ring-frame">
+            <div class="story-circle-profile">
+                <img src="/static/images/instagram.jpg" alt="Hublot Hub">
+            </div>
+        </div>
+        <span class="story-caption-label">Hublot Live</span>
+    </div>
+
+</div>
+
+<div id="insta-story-overlay-modal" class="insta-viewer-overlay">
+    <div class="insta-viewer-wrapper">
+        
+        <div class="story-progress-timeline">
+            <div id="story-progress-bar" class="story-progress-indicator"></div>
+        </div>
+
+        <div class="story-viewer-header">
+            <div class="story-brand-info">
+                <img src="/static/images/instagram.jpg" class="story-mini-avatar" alt="Avatar">
+                <span id="story-modal-brand-name" class="story-brand-title">WATCH KINGDOM</span>
+            </div>
+            <button class="story-close-trigger" onclick="shutdownInstaStory()">&times;</button>
+        </div>
+
+        <video id="insta-modal-video-player" class="insta-story-video" playsinline preload="auto"></video>
+
+        <div class="story-bottom-action-tray">
+            <a href="https://api.whatsapp.com/send?phone=9099764589&text=Hello%20Watch%20Kingdom%20Official!%20I%20saw%20your%20Live%20Video%20Story%20on%20the%20website%20and%20want%20to%20inquire%20about%20this%20watch." target="_blank" style="text-decoration: none;">
+                <button class="btn-luxury" style="background: #25D366; color: #fff; border: none; width: 100%; padding: 12px; font-weight: bold; font-size: 13px; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); cursor: pointer;">
+                    💬 INQUIRE NOW VIA WHATSAPP
+                </button>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    let progressTimerInterval;
+    const overlayModal = document.getElementById('insta-story-overlay-modal');
+    const modalVideo = document.getElementById('insta-modal-video-player');
+    const progressBar = document.getElementById('story-progress-bar');
+    const titleHeader = document.getElementById('story-modal-brand-name');
+
+    function triggerInstaStory(videoSourcePath, brandHeadlineText) {
+        titleHeader.innerText = brandHeadlineText;
+        modalVideo.src = videoSourcePath;
+        overlayModal.style.display = 'flex';
+        
+        // Reset and Play configuration
+        progressBar.style.width = '0%';
+        modalVideo.currentTime = 0;
+        
+        // Hide Main Floating WhatsApp Button if present to avoid overlap bugs
+        const mainFloatBtn = document.getElementById('master-whatsapp-float');
+        if(mainFloatBtn) mainFloatBtn.style.display = 'none';
+
+        modalVideo.play().then(() => {
+            trackStoryProgress();
+        }).catch(err => {
+            console.log("Auto-play blocked, waiting for click to loop safely", err);
+        });
+    }
+
+    function trackStoryProgress() {
+        clearInterval(progressTimerInterval);
+        
+        progressTimerInterval = setInterval(() => {
+            if (!modalVideo.paused && modalVideo.duration) {
+                const percentagePlayed = (modalVideo.currentTime / modalVideo.duration) * 100;
+                progressBar.style.width = percentagePlayed + '%';
+                
+                // If video ends naturally, shut down popup automatically
+                if (modalVideo.currentTime >= modalVideo.duration) {
+                    shutdownInstaStory();
+                }
+            }
+        }, 40);
+    }
+
+    function shutdownInstaStory() {
+        modalVideo.pause();
+        clearInterval(progressTimerInterval);
+        overlayModal.style.display = 'none';
+        modalVideo.src = ""; // Flush memory buffer
+        
+        // Bring back the main floating button safely
+        const mainFloatBtn = document.getElementById('master-whatsapp-float');
+        if(mainFloatBtn) mainFloatBtn.style.display = 'flex';
+    }
+
+    // Extra UX Layer: Close modal instantly if user clicks outside the wrapper window frame area
+    overlayModal.addEventListener('click', function(e) {
+        if (e.target === overlayModal) {
+            shutdownInstaStory();
+        }
+    });
+</script>
 <section style="max-width: 1100px; margin: 0 auto 50px auto; padding: 30px; background: #ffffff; border: 1px solid var(--border-color); border-left: 4px solid var(--luxury-gold); text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
     <span style="color: var(--luxury-gold); letter-spacing: 3px; font-size: 11px; font-weight: 600; text-transform: uppercase;">⚡ Live Catalog Updates</span>
     <h2 style="font-size: 24px; font-weight: 300; margin: 10px 0 15px 0; letter-spacing: 1px; color: var(--text-main);">Want to Explore Our Complete Live Stock?</h2>
