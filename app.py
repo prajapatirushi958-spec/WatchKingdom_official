@@ -137,7 +137,7 @@ WATCHES_DATA = [
         
         'images': ['rado1.jpeg', 'rado2.jpeg'], 
         'category': 'Classic'
-    },
+    }
 
 
 ]
