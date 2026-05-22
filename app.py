@@ -83,6 +83,63 @@ WATCHES_DATA = [
         'category': 'Classic'
     },
 
+    {
+        'id':8, 
+        'name': 'Omega Speedmaster Silver Snoopy ', 
+        'brand': 'Omega', 
+        'price': 1799, 
+        'desc': 'Premium luxury steel sports watch with an iconic octagonal bezel.',
+        'specs': '41mm Dial | Automatic Movement | Strong Belt | All Chrono Working | New Model |  ',
+        
+        'images': ['o1.jpeg', 'o2.jpeg','o3.jpeg','04.jpeg'], 
+        'category': 'Sport'
+    },
+{
+        'id':9 , 
+        'name': 'MINI FOCUS ORIGINAL ', 
+        'brand': 'MINI FOCUS', 
+        'price': 2799, 
+        'desc': 'Premium luxury steel Classic watch with Strong Belt.',
+        'specs': '41mm Dial | Quartz Movement | Strong Belt | All Chrono Working | Japan Machine |  ',
+        
+        'images': ['m1.jpeg', 'm2.jpeg','m3.jpeg','m4.jpeg'], 
+        'category': 'Classic'
+    },
+{
+        'id':10 , 
+        'name': 'NAVIFORCE - NF9243S ', 
+        'brand': 'NAVIFORCE', 
+        'price': 1899, 
+        'desc': 'Premium luxury steel Classic watch with OG BOX & BAG .',
+        'specs': '41mm Dial | Automatic Movement | Strong Belt | All Chrono Working | Naviforce Original  |  ',
+        
+        'images': ['n1.jpeg', 'n2.jpeg','n3.jpeg','n4.jpeg'], 
+        'category': 'Classic'
+    },
+{
+        'id':11 , 
+        'name': 'Rado  HighTech Automatic ', 
+        'brand': 'RADO', 
+        'price': 1799, 
+        'desc': 'Premium luxury steel Classic watch with Strong Belt .',
+        'specs': '41mm Dial | Automatic Movement | Strong Belt | All Chrono Working | Silver |  ',
+        
+        'images': ['r1.jpeg', 'r2.jpeg','r3.jpeg'], 
+        'category': 'Sport'
+    },
+{
+        'id':12 , 
+        'name': 'RADO QUARTZ ', 
+        'brand': 'RADO', 
+        'price': 1250, 
+        'desc': 'Premium luxury steel Classic watch.',
+        'specs':  | Automatic Movement | Strong Belt | All Chrono Working | Trending  |  ',
+        
+        'images': ['rado1.jpeg', 'rado2.jpeg'], 
+        'category': 'Classic'
+    },
+
+
 ]
 
 USER_CART = {}
