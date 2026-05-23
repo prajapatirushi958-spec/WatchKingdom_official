@@ -127,6 +127,93 @@
         }
         .dial-filter-card:hover .dial-label { color: #ffffff; }
 
+        /* 🎨 SAMSUNG DUAL-TONE GEOMETRIC STYLING */
+        .samsung-featured-arena {
+            position: relative;
+            background: #090909;
+            padding: 60px 0;
+            margin: 40px auto;
+            border: 1px solid #141414;
+            overflow: hidden;
+            max-width: 1200px;
+        }
+        
+        .split-bg-curve {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(44, 38, 26, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .featured-watches-wrap {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .vault-mini-tag {
+            color: #b39246;
+            font-size: 10px;
+            letter-spacing: 4px;
+            margin: 0;
+        }
+
+        .vault-main-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin: 10px 0 40px 0;
+            letter-spacing: 2px;
+        }
+
+        .samsung-triple-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .featured-side-frame {
+            width: 140px;
+            height: 180px;
+            opacity: 0.3;
+            filter: blur(1px) grayscale(50%);
+            transition: all 0.4s ease;
+        }
+
+        .featured-side-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .featured-center-crown {
+            position: relative;
+            width: 220px;
+            height: 280px;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .featured-center-crown img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 3;
+            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
+        }
+
+        .featured-center-crown:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
         /* 🛍️ MILANO HIGH-END WATCH COLLECTION GRID */
         .vault-grid-title {
             margin-top: 60px;
@@ -274,6 +361,129 @@
             border-color: #ffffff;
         }
 
+        /* 🖤 CARREN STYLE MULTI-VARIANT TECHNICAL SPEC MATRIX */
+        .carren-master-detailer {
+            background: linear-gradient(180deg, #0d0d0d 0%, #050505 100%);
+            border-top: 1px solid #161616;
+            padding: 80px 5%;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .carren-grid-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .carren-mini-tag {
+            color: #b39246;
+            font-size: 9px;
+            letter-spacing: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .carren-watch-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0 0 5px 0;
+            color: #ffffff;
+        }
+
+        .carren-watch-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #666;
+            font-size: 16px;
+            margin: 0 0 40px 0;
+        }
+
+        .carren-table-matrix {
+            border-top: 1px solid #1a1a1a;
+            margin-bottom: 40px;
+        }
+
+        .matrix-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #1a1a1a;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .matrix-label {
+            color: #555;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .matrix-value {
+            color: #e5e5e5;
+            font-weight: 400;
+            text-align: right;
+        }
+
+        .carren-matrix-btn {
+            display: inline-block;
+            background: #b39246;
+            color: #0a0a0a;
+            padding: 14px 35px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #b39246;
+        }
+
+        .carren-matrix-btn:hover {
+            background: transparent;
+            color: #b39246;
+            box-shadow: 0 0 20px rgba(179,146,70,0.2);
+        }
+
+        .carren-image-showcase {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 450px;
+        }
+
+        .radial-backplane-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(179,146,70,0.06) 0%, transparent 65%);
+            z-index: 1;
+        }
+
+        .carren-image-showcase img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.9));
+            animation: dialFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes dialFloat {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
         /* 📱 RESPONSIVE SUCCESS ENGINE */
         @media (max-width: 768px) {
             .vault-header { padding: 15px 5%; }
@@ -283,6 +493,15 @@
             .luxury-img-container { height: 180px; }
             .vault-grid-title { font-size: 20px; }
             .watch-model-title { font-size: 12px; min-height: 34px; }
+            .samsung-triple-display { gap: 15px; }
+            .featured-side-frame { width: 80px; height: 110px; }
+            .featured-center-crown { width: 140px; height: 180px; }
+            .vault-main-headline { font-size: 24px; }
+            .carren-grid-layout { grid-template-columns: 1fr; gap: 40px; }
+            .carren-master-detailer { padding: 50px 5%; margin-top: 40px; }
+            .carren-watch-title { font-size: 26px; }
+            .carren-image-showcase { height: 280px; order: -1; }
+            .matrix-row { font-size: 10px; padding: 12px 0; }
         }
     </style>
 </head>
@@ -307,124 +526,27 @@
         </div>
 
         <div class="samsung-featured-arena">
-    <div class="split-bg-curve"></div>
-    <div class="featured-watches-wrap">
-        <h4 class="vault-mini-tag">🔥 THE VAULT MASTERPIECE DROPS</h4>
-        <h2 class="vault-main-headline">Curated Excellence</h2>
-        
-        <div class="samsung-triple-display">
-            <div class="featured-side-frame left-frame">
-                <img src="/static/images/r1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Premium Edition">
-            </div>
-            
-            <div class="featured-center-crown">
-                <img src="/static/images/omega1.jpeg" onerror="this.src='/static/images/wac.png'" alt="The Hero Drop">
-                <div class="crown-glow-ring"></div>
-            </div>
-            
-            <div class="featured-side-frame right-frame">
-                <img src="/static/images/seiko1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Premium Edition">
+            <div class="split-bg-curve"></div>
+            <div class="featured-watches-wrap">
+                <h4 class="vault-mini-tag">🔥 THE VAULT MASTERPIECE DROPS</h4>
+                <h2 class="vault-main-headline">Curated Excellence</h2>
+                
+                <div class="samsung-triple-display">
+                    <div class="featured-side-frame left-frame">
+                        <img src="/static/images/r1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Premium Edition">
+                    </div>
+                    
+                    <div class="featured-center-crown">
+                        <img src="/static/images/omega1.jpeg" onerror="this.src='/static/images/wac.png'" alt="The Hero Drop">
+                        <div class="crown-glow-ring"></div>
+                    </div>
+                    
+                    <div class="featured-side-frame right-frame">
+                        <img src="/static/images/seiko1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Premium Edition">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<style>
-    /* 🎨 SAMSUNG DUAL-TONE GEOMETRIC STYLING */
-    .samsung-featured-arena {
-        position: relative;
-        background: #090909;
-        padding: 60px 0;
-        margin: 40px auto;
-        border: 1px solid #141414;
-        overflow: hidden;
-        max-width: 1200px;
-    }
-    
-    .split-bg-curve {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 450px;
-        height: 450px;
-        background: radial-gradient(circle, rgba(44, 38, 26, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        z-index: 1;
-    }
-
-    .featured-watches-wrap {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-    }
-
-    .vault-mini-tag {
-        color: #b39246;
-        font-size: 10px;
-        letter-spacing: 4px;
-        margin: 0;
-    }
-
-    .vault-main-headline {
-        font-family: 'Playfair Display', serif;
-        font-size: 32px;
-        font-weight: 400;
-        margin: 10px 0 40px 0;
-        letter-spacing: 2px;
-    }
-
-    .samsung-triple-display {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 50px;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .featured-side-frame {
-        width: 140px;
-        height: 180px;
-        opacity: 0.3;
-        filter: blur(1px) grayscale(50%);
-        transition: all 0.4s ease;
-    }
-
-    .featured-side-frame img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-    }
-
-    .featured-center-crown {
-        position: relative;
-        width: 220px;
-        height: 280px;
-        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-
-    .featured-center-crown img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        position: relative;
-        z-index: 3;
-        filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
-    }
-
-    .featured-center-crown:hover {
-        transform: scale(1.05) translateY(-5px);
-    }
-
-    /* 📱 MOBILE ARCHITECTURE RESCUE */
-    @media (max-width: 768px) {
-        .samsung-triple-display { gap: 15px; }
-        .featured-side-frame { width: 80px; height: 110px; }
-        .featured-center-crown { width: 140px; height: 180px; }
-        .vault-main-headline { font-size: 24px; }
-    }
-</style>
 
         <div class="vault-grid-title">The Masterpiece Catalog</div>
 
@@ -489,6 +611,33 @@
             {% endif %}
             
         </div>
+
+        <div class="carren-master-detailer">
+            <div class="carren-grid-layout">
+                
+                <div class="carren-specs-column">
+                    <span class="carren-mini-tag">HOROLOGY METRICS</span>
+                    <h2 class="carren-watch-title">OMEGA SPEEDMASTER</h2>
+                    <p class="carren-watch-subtitle">Snoopy Silver Masterpiece Edition</p>
+                    
+                    <div class="carren-table-matrix">
+                        <div class="matrix-row"><span class="matrix-label">CASE MATERIAL</span><span class="matrix-value">316L Solid Stainless Steel</span></div>
+                        <div class="matrix-row"><span class="matrix-label">WATER RESISTANCE</span><span class="matrix-value">5 Bar (50 Meters)</span></div>
+                        <div class="matrix-row"><span class="matrix-label">GLASS MATERIAL</span><span class="matrix-value">Scratch-Proof Sapphire Crystal</span></div>
+                        <div class="matrix-row"><span class="matrix-label">MOVEMENT CALIBER</span><span class="matrix-value">Sweeping Automatic Co-Axial</span></div>
+                        <div class="matrix-row"><span class="matrix-label">BRACELET TYPE</span><span class="matrix-value">Premium Oyster Speed Strap</span></div>
+                    </div>
+                    <a href="https://wa.me/919099764589" target="_blank" class="carren-matrix-btn">SECURE THIS CALIBER</a>
+                </div>
+
+                <div class="carren-image-showcase">
+                    <div class="radial-backplane-glow"></div>
+                    <img src="/static/images/omega1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Omega Masterpiece">
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -496,7 +645,6 @@
         const cards = document.querySelectorAll('.milano-luxury-card');
         const labels = document.querySelectorAll('.dial-filter-card');
         
-        // Remove active state color from all slider dials
         labels.forEach(l => l.style.borderBottom = "none");
         
         cards.forEach(card => {
