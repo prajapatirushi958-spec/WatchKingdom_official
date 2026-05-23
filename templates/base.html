@@ -9,14 +9,30 @@
 <body>
 
     <header>
-        <a href="/" class="brand-logo-link" style="display: flex; align-items: center; text-decoration: none;">
-    <img src="/static/images/wac.png" alt="Watch Kingdom Official" class="main-app-logo">
-</a>
+        <div class="brand-header-wrapper">
+    <a href="/" class="brand-logo-link">
+        <img src="/static/images/wac.png" alt="Watch Kingdom Official" class="main-app-logo">
+    </a>
+</div>
 
 <style>
-    /* Desktop aur Badi Screens ke liye Custom Control */
+    /* Global Control */
+    .brand-header-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-width: 180px; /* Logo ko squeeze hone se bachayega */
+    }
+    
+    .brand-logo-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    /* 💻 DESKTOP RULES */
     .main-app-logo {
-        height: 55px; /* Navbar ke andar perfect size */
+        height: 60px; /* Desktop par bada aur rich look */
         width: auto;
         object-fit: contain;
         transition: transform 0.2s ease;
@@ -24,18 +40,29 @@
     }
     
     .main-app-logo:hover {
-        transform: scale(1.03); /* Chota sa elegant premium bounce hover par */
+        transform: scale(1.03);
     }
 
-    /* 📱 MOBILE INTEGRATION SPECIFIC RULES (Ekdum Successful Fix) */
+    /* 📱 MOBILE FIX (Screenshot Wala Issue Ekdum Solve) */
     @media (max-width: 768px) {
-        .main-app-logo {
-            height: 42px; /* Mobile screen ke hisab se automatic chota ho jayega */
-            padding: 3px 0;
+        .brand-header-wrapper {
+            width: 100%; /* Mobile me poori width control karega */
+            justify-content: center; /* Logo ko center me rakhega */
+            margin-bottom: 10px; /* Menu links se thodi gap banayega */
         }
-        /* Agar logo ke sath navbar me space ka issue aaye toh link ki margin control */
-        .brand-logo-link {
-            margin-left: 10px; 
+
+        .main-app-logo {
+            height: 55px; /* Mobile par bhi achha aur readable bada size */
+            padding: 5px 0;
+            display: block;
+        }
+
+        /* Agar aapki links/text logo par overlap ho rahe hain, toh unhe niche push karega */
+        nav, .navbar, .nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
     }
 </style>
