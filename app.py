@@ -187,18 +187,15 @@ def get_cart():
     total_price = sum(item['price'] * item['quantity'] for item in USER_CART.values())
     return jsonify({'items': list(USER_CART.values()), 'total': total_price})
 
+# =================================================================
+# 👑 THE OFFICIAL DYNAMIC VAULT ENGINE ROUTE
+# =================================================================
 @app.route('/vault')
 def watch_vault():
-    # 👑 Jo logic aapne home route (/) mein lagaya hai products fetch karne ka, 
-    # wahi same variable yahan se pass karna hai.
+    # Aapka real continuous stock local dictionary data variable 'WATCHES_DATA' hai
+    all_products = WATCHES_DATA
     
-    # E.g., Agar aapka main database variable 'products' hai:
-    from app import products_db # (Ya jo bhi aapka database import statement hai)
-    
-    # Aapka dynamic logic variable bhejte hue:
-    all_products = products  # (Ya jis dynamic list se aap homepage par loop chalate ho)
-    
+    # Hum seedha yahi real array dynamic matrix vault.html ko de rahe hain
     return render_template('vault.html', products=all_products)
-
 if __name__ == '__main__':
     app.run(debug=True) 
