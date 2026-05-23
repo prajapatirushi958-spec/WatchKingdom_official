@@ -9,64 +9,7 @@
 <body>
 
     <header>
-        <div class="brand-header-wrapper">
-    <a href="/" class="brand-logo-link">
-        <img src="/static/images/wac.png" alt="Watch Kingdom Official" class="main-app-logo">
-    </a>
-</div>
-
-<style>
-    /* Global Control */
-    .brand-header-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        min-width: 180px; /* Logo ko squeeze hone se bachayega */
-    }
-    
-    .brand-logo-link {
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-    }
-
-    /* 💻 DESKTOP RULES */
-    .main-app-logo {
-        height: 60px; /* Desktop par bada aur rich look */
-        width: auto;
-        object-fit: contain;
-        transition: transform 0.2s ease;
-        padding: 5px 0;
-    }
-    
-    .main-app-logo:hover {
-        transform: scale(1.03);
-    }
-
-    /* 📱 MOBILE FIX (Screenshot Wala Issue Ekdum Solve) */
-    @media (max-width: 768px) {
-        .brand-header-wrapper {
-            width: 100%; /* Mobile me poori width control karega */
-            justify-content: center; /* Logo ko center me rakhega */
-            margin-bottom: 10px; /* Menu links se thodi gap banayega */
-        }
-
-        .main-app-logo {
-            height: 55px; /* Mobile par bhi achha aur readable bada size */
-            padding: 5px 0;
-            display: block;
-        }
-
-        /* Agar aapki links/text logo par overlap ho rahe hain, toh unhe niche push karega */
-        nav, .navbar, .nav-links {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-    }
-</style>
-        <nav>
+               <nav>
             <a href="/">Collections</a>
             <a href="#about-section">Our Story</a>
             <a href="#contact-section">Contact Us</a>
