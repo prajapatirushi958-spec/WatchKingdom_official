@@ -9,7 +9,36 @@
 <body>
 
     <header>
-        <a href="/" class="logo">WATCH KINGDOM</a>
+        <a href="/" class="brand-logo-link" style="display: flex; align-items: center; text-decoration: none;">
+    <img src="/static/images/wac.png" alt="Watch Kingdom Official" class="main-app-logo">
+</a>
+
+<style>
+    /* Desktop aur Badi Screens ke liye Custom Control */
+    .main-app-logo {
+        height: 55px; /* Navbar ke andar perfect size */
+        width: auto;
+        object-fit: contain;
+        transition: transform 0.2s ease;
+        padding: 5px 0;
+    }
+    
+    .main-app-logo:hover {
+        transform: scale(1.03); /* Chota sa elegant premium bounce hover par */
+    }
+
+    /* 📱 MOBILE INTEGRATION SPECIFIC RULES (Ekdum Successful Fix) */
+    @media (max-width: 768px) {
+        .main-app-logo {
+            height: 42px; /* Mobile screen ke hisab se automatic chota ho jayega */
+            padding: 3px 0;
+        }
+        /* Agar logo ke sath navbar me space ka issue aaye toh link ki margin control */
+        .brand-logo-link {
+            margin-left: 10px; 
+        }
+    }
+</style>
         <nav>
             <a href="/">Collections</a>
             <a href="#about-section">Our Story</a>
