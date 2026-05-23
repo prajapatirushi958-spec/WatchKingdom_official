@@ -189,8 +189,16 @@ def get_cart():
 
 @app.route('/vault')
 def watch_vault():
-    # Agar aap database se collections fetch kar rahe ho toh yahan pass kar sakte ho
-    return render_template('vault.html')
+    # 👑 Jo logic aapne home route (/) mein lagaya hai products fetch karne ka, 
+    # wahi same variable yahan se pass karna hai.
+    
+    # E.g., Agar aapka main database variable 'products' hai:
+    from app import products_db # (Ya jo bhi aapka database import statement hai)
+    
+    # Aapka dynamic logic variable bhejte hue:
+    all_products = products  # (Ya jis dynamic list se aap homepage par loop chalate ho)
+    
+    return render_template('vault.html', products=all_products)
 
 if __name__ == '__main__':
     app.run(debug=True) 
