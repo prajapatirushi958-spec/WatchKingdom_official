@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Vault | Watch Kingdom Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🌌 MILANO & CARREN PALACE AMBIANCE */
+        body {
+            background-color: #0a0a0a !important; /* Pure Premium Dark Charcoal/Black */
+            color: #ffffff !important;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 👑 VAULT ELITE NAVIGATION BAR */
+        .vault-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 5%;
+            border-bottom: 1px solid #161616;
+            background: #0f0f0f;
+            backdrop-filter: blur(10px);
+        }
+
+        .vault-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .vault-logo span {
+            color: #b39246; /* Royal Gold Vault Tag */
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-left: 5px;
+        }
+
+        .exit-vault-btn {
+            background: transparent;
+            color: #b39246;
+            border: 1px solid #b39246;
+            padding: 8px 20px;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .exit-vault-btn:hover {
+            background: #b39246;
+            color: #0a0a0a;
+            box-shadow: 0 0 15px rgba(179,146,70,0.4);
+            transform: translateY(-1px);
+        }
+
+        /* 🎡 CHRONOTO STYLE ROTATING FILTER DIALS */
+        .vault-wrapper {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 5%;
+        }
+
+        .section-tagline {
+            color: #b39246;
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .chronoto-slider-track {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            overflow-x: auto;
+            padding: 10px 0 25px 0;
+            scroll-behavior: smooth;
+        }
+        .chronoto-slider-track::-webkit-scrollbar { display: none; }
+
+        .dial-filter-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            min-width: 100px;
+            text-decoration: none;
+        }
+
+        .dial-lens-circle {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            border: 1px solid #222;
+            background: radial-gradient(circle, #1a1a1a 20%, #0d0d0d 90%);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.02);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .dial-filter-card:hover .dial-lens-circle {
+            transform: rotate(35deg); /* Chronoto mechanical rotation engine */
+            border-color: #b39246;
+            box-shadow: 0 0 20px rgba(179,146,70,0.35);
+        }
+
+        .dial-label {
+            margin-top: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #666;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+        .dial-filter-card:hover .dial-label { color: #ffffff; }
+
+        /* 🛍️ MILANO HIGH-END WATCH COLLECTION GRID */
+        .vault-grid-title {
+            margin-top: 60px;
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-style: italic;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 35px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 15px;
+        }
+
+        .milano-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        /* Pure Custom Luxury Boutique Card */
+        .milano-luxury-card {
+            background: #0f0f0f;
+            border: 1px solid #141414;
+            border-radius: 0px; /* Sharp corporate luxury edges */
+            padding: 25px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .milano-luxury-card:hover {
+            border-color: #2c261a; /* Gold tint bleed */
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        .luxury-img-container {
+            background: #070707;
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+            border: 1px solid #111;
+        }
+        .luxury-img-container img {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+        .milano-luxury-card:hover .luxury-img-container img {
+            transform: scale(1.05); /* Soft watch dial magnification on hover */
+        }
+
+        .brand-badge-text {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #b39246;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .watch-model-title {
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            margin: 5px 0 10px 0;
+            color: #e5e5e5;
+        }
+
+        .luxury-pricing-tag {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        /* 📋 DYNAMIC SPEC-SHEET ACCORDION (Courtesy of Kings Style) */
+        .specs-quick-glance {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            border-top: 1px dashed #1a1a1a;
+            padding-top: 15px;
+            margin-top: 15px;
+            font-size: 9px;
+            color: #555;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .milano-luxury-card:hover .specs-quick-glance {
+            color: #aaa;
+            border-top-color: #2c261a;
+        }
+
+        /* 📱 RESPONSIVE SUCCESS ENGINE */
+        @media (max-width: 768px) {
+            .vault-header { padding: 15px 5%; }
+            .chronoto-slider-track { justify-content: flex-start; gap: 20px; }
+            .dial-lens-circle { width: 75px; height: 75px; }
+            .milano-products-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 15px; }
+            .luxury-img-container { height: 180px; }
+            .vault-grid-title { font-size: 20px; }
+            .watch-model-title { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="vault-header">
+        <a href="/" class="vault-logo">WATCH KINGDOM <span>VAULT</span></a>
+        <a href="/" class="exit-vault-btn">⚡ EXIT THE VAULT</a>
+    </header>
+
+    <div class="vault-wrapper">
+        
+        <div class="section-tagline">Filter By Dial Signature</div>
+        <div class="chronoto-slider-track">
+            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: radial-gradient(circle, #153523 20%, #0d0d0d 90%);"></div><span class="dial-label">Rolex</span></div>
+            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: linear-gradient(45deg, #1f1f1f 25%, #0d0d0d 25%, #0d0d0d 50%, #1f1f1f 50%); background-size:8px 8px;"></div><span class="dial-label">AP</span></div>
+            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: radial-gradient(circle, #333 10%, #070707 90%);"></div><span class="dial-label">Hublot</span></div>
+            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: repeating-radial-gradient(circle, #1f1f1f, #0d0d0d 8px);"></div><span class="dial-label">Omega</span></div>
+            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: radial-gradient(circle, #2c261a 10%, #0a0a0a 90%);"></div><span class="dial-label">Rado</span></div>
+        </div>
+
+        <div class="vault-grid-title">The Masterpiece Catalog</div>
+
+        <div class="milano-products-grid">
+            
+            {% if products %}
+                {% for product in products %}
+                <div class="milano-luxury-card">
+                    <div class="luxury-img-container">
+                        <img src="{{ url_for('static', filename='images/' + product.image) if product.image else '/static/images/wac.png' }}" alt="{{ product.name }}">
+                    </div>
+                    <div class="brand-badge-text">{{ product.brand if product.brand else 'OFFICIAL' }}</div>
+                    <div class="watch-model-title">{{ product.name }}</div>
+                    <div class="luxury-pricing-tag">DM FOR PRICE</div>
+                    
+                    <div class="specs-quick-glance">
+                        <span>💎 Sapphire</span>
+                        <span>⚙️ Automatic</span>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="milano-luxury-card">
+                    <div class="luxury-img-container"><span style="color:#333;">Rolex Specimen</span></div>
+                    <div class="brand-badge-text">Rolex</div>
+                    <div class="watch-model-title">Daytona Cosmograph Rose Gold</div>
+                    <div class="luxury-pricing-tag">DM FOR EXCLUSIVE PRICE</div>
+                    <div class="specs-quick-glance"><span>💎 Sapphire</span><span>⚙️ Chronograph</span></div>
+                </div>
+                <div class="milano-luxury-card">
+                    <div class="luxury-img-container"><span style="color:#333;">AP Specimen</span></div>
+                    <div class="brand-badge-text">Audemars Piguet</div>
+                    <div class="watch-model-title">Royal Oak Offshore Black Dial</div>
+                    <div class="luxury-pricing-tag">DM FOR EXCLUSIVE PRICE</div>
+                    <div class="specs-quick-glance"><span>💎 Sapphire</span><span>⚙️ Caliber 3120</span></div>
+                </div>
+            {% endif %}
+            </div>
+    </div>
+
+</body>
+</html>
