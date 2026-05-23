@@ -183,6 +183,20 @@
             transform: scale(1.05); /* Soft watch dial magnification on hover */
         }
 
+        /* Courtesy of Kings Floating Status Badge */
+        .floating-status-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 8px;
+            letter-spacing: 2px;
+            background: rgba(179, 146, 70, 0.1);
+            color: #b39246;
+            padding: 4px 10px;
+            border: 1px solid rgba(179, 146, 70, 0.2);
+            font-weight: 700;
+        }
+
         .brand-badge-text {
             font-size: 10px;
             letter-spacing: 3px;
@@ -198,6 +212,7 @@
             letter-spacing: 1.5px;
             margin: 5px 0 10px 0;
             color: #e5e5e5;
+            min-height: 40px;
         }
 
         .luxury-pricing-tag {
@@ -213,6 +228,7 @@
         .specs-quick-glance {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 15px;
             border-top: 1px dashed #1a1a1a;
             padding-top: 15px;
@@ -227,15 +243,46 @@
             border-top-color: #2c261a;
         }
 
+        .spec-col {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .spec-vertical-line {
+            width: 1px;
+            height: 10px;
+            background: #222;
+        }
+
+        /* Call To Action Direct Link */
+        .vault-action-link {
+            display: block;
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid #222;
+            padding: 10px;
+            margin-top: 15px;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .milano-luxury-card:hover .vault-action-link {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+
         /* 📱 RESPONSIVE SUCCESS ENGINE */
         @media (max-width: 768px) {
             .vault-header { padding: 15px 5%; }
             .chronoto-slider-track { justify-content: flex-start; gap: 20px; }
             .dial-lens-circle { width: 75px; height: 75px; }
-            .milano-products-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 15px; }
+            .milano-products-grid { grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 15px; }
             .luxury-img-container { height: 180px; }
             .vault-grid-title { font-size: 20px; }
-            .watch-model-title { font-size: 12px; }
+            .watch-model-title { font-size: 12px; min-height: 34px; }
         }
     </style>
 </head>
@@ -250,59 +297,79 @@
         
         <div class="section-tagline">Filter By Dial Signature</div>
         <div class="chronoto-slider-track">
-            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: radial-gradient(circle, #153523 20%, #0d0d0d 90%);"></div><span class="dial-label">Rolex</span></div>
-            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: linear-gradient(45deg, #1f1f1f 25%, #0d0d0d 25%, #0d0d0d 50%, #1f1f1f 50%); background-size:8px 8px;"></div><span class="dial-label">AP</span></div>
-            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: radial-gradient(circle, #333 10%, #070707 90%);"></div><span class="dial-label">Hublot</span></div>
-            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: repeating-radial-gradient(circle, #1f1f1f, #0d0d0d 8px);"></div><span class="dial-label">Omega</span></div>
-            <div class="dial-filter-card"><div class="dial-lens-circle" style="background: radial-gradient(circle, #2c261a 10%, #0a0a0a 90%);"></div><span class="dial-label">Rado</span></div>
+            <div class="dial-filter-card" onclick="filterVaultBrand('all')"><div class="dial-lens-circle" style="background: radial-gradient(circle, #333 20%, #111 90%);"></div><span class="dial-label">All Stocks</span></div>
+            <div class="dial-filter-card" onclick="filterVaultBrand('rolex')"><div class="dial-lens-circle" style="background: radial-gradient(circle, #153523 20%, #0d0d0d 90%);"></div><span class="dial-label">Rolex</span></div>
+            <div class="dial-filter-card" onclick="filterVaultBrand('omega')"><div class="dial-lens-circle" style="background: repeating-radial-gradient(circle, #1f1f1f, #0d0d0d 8px);"></div><span class="dial-label">Omega</span></div>
+            <div class="dial-filter-card" onclick="filterVaultBrand('hublot')"><div class="dial-lens-circle" style="background: radial-gradient(circle, #333 10%, #070707 90%);"></div><span class="dial-label">Hublot</span></div>
+            <div class="dial-filter-card" onclick="filterVaultBrand('rado')"><div class="dial-lens-circle" style="background: radial-gradient(circle, #2c261a 10%, #0a0a0a 90%);"></div><span class="dial-label">Rado</span></div>
+            <div class="dial-filter-card" onclick="filterVaultBrand('casio')"><div class="dial-lens-circle" style="background: radial-gradient(circle, #222 10%, #050505 90%);"></div><span class="dial-label">Casio</span></div>
+            <div class="dial-filter-card" onclick="filterVaultBrand('seiko')"><div class="dial-lens-circle" style="background: radial-gradient(circle, #111 10%, #000 90%);"></div><span class="dial-label">Seiko</span></div>
         </div>
 
         <div class="vault-grid-title">The Masterpiece Catalog</div>
 
         <div class="milano-products-grid">
             
-            <div class="milano-luxury-card" data-brand="rolex">
-                <div class="luxury-img-container">
-                    <img src="/static/images/wac.png" alt="Specimen">
-                    <div class="floating-status-tag">VAULT ONLY</div>
-                </div>
-                <div class="brand-badge-text">Rolex</div>
-                <div class="watch-model-title">Daytona Cosmograph Rose Gold</div>
-                <div class="luxury-pricing-tag">DM FOR EXCLUSIVE PRICE</div>
-                <div class="specs-quick-glance">
-                    <div class="spec-col"><span class="spec-icon">💎</span><span class="spec-text">Sapphire</span></div>
-                    <div class="spec-vertical-line"></div>
-                    <div class="spec-col"><span class="spec-icon">⚙️</span><span class="spec-text">Automatic</span></div>
-                </div>
-                <a href="https://wa.me/919099764589" target="_blank" class="vault-action-link">INQUIRE VIA WHATSAPP</a>
-            </div>
-
-            <div class="milano-luxury-card" data-brand="ap">
-                <div class="luxury-img-container">
-                    <img src="/static/images/wac.png" alt="Specimen">
-                    <div class="floating-status-tag">VAULT ONLY</div>
-                </div>
-                <div class="brand-badge-text">Audemars Piguet</div>
-                <div class="watch-model-title">Royal Oak Offshore Black Dial</div>
-                <div class="luxury-pricing-tag">DM FOR EXCLUSIVE PRICE</div>
-                <div class="specs-quick-glance">
-                    <div class="spec-col"><span class="spec-icon">💎</span><span class="spec-text">Sapphire</span></div>
-                    <div class="spec-vertical-line"></div>
-                    <div class="spec-col"><span class="spec-icon">⚙️</span><span class="spec-text">Automatic</span></div>
-                </div>
-                <a href="https://wa.me/919099764589" target="_blank" class="vault-action-link">INQUIRE VIA WHATSAPP</a>
-            </div>
-
-        </div>                <div class="milano-luxury-card">
-                    <div class="luxury-img-container"><span style="color:#333;">AP Specimen</span></div>
-                    <div class="brand-badge-text">Audemars Piguet</div>
-                    <div class="watch-model-title">Royal Oak Offshore Black Dial</div>
+            {% if products %}
+                {% for product in products %}
+                <div class="milano-luxury-card" data-brand="{{ product.brand | lower if product.brand else 'official' }}">
+                    <div class="luxury-img-container">
+                        
+                        {% if product.images and product.images|length > 0 %}
+                            <img src="{{ url_for('static', filename='images/' + product.images[0]) }}" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="/static/images/wac.png" alt="Watch Kingdom">
+                        {% endif %}
+                        
+                        <div class="floating-status-tag">VAULT STOCK</div>
+                    </div>
+                    <div class="brand-badge-text">{{ product.brand if product.brand else 'OFFICIAL' }}</div>
+                    <div class="watch-model-title">{{ product.name }}</div>
                     <div class="luxury-pricing-tag">DM FOR EXCLUSIVE PRICE</div>
-                    <div class="specs-quick-glance"><span>💎 Sapphire</span><span>⚙️ Caliber 3120</span></div>
+                    
+                    <div class="specs-quick-glance">
+                        <div class="spec-col"><span class="spec-icon">💎</span><span class="spec-text">Sapphire</span></div>
+                        <div class="spec-vertical-line"></div>
+                        <div class="spec-col"><span class="spec-icon">⚙️</span><span class="spec-text">Automatic</span></div>
+                    </div>
+                    <a href="https://wa.me/919099764589" target="_blank" class="vault-action-link">INQUIRE VIA WHATSAPP</a>
                 </div>
+                {% endfor %}
+            {% else %}
+                
+                <div class="milano-luxury-card" data-brand="official">
+                    <div class="luxury-img-container">
+                        <img src="/static/images/wac.png" alt="Specimen">
+                        <div class="floating-status-tag">EXCLUSIVITY</div>
+                    </div>
+                    <div class="brand-badge-text">Watch Kingdom</div>
+                    <div class="watch-model-title">No Active Stock Found In Vault</div>
+                    <div class="luxury-pricing-tag">DM TO ORDER IN CUSTOMS</div>
+                    <div class="specs-quick-glance">
+                        <div class="spec-col"><span class="spec-icon">💎</span><span class="spec-text">Sapphire</span></div>
+                        <div class="spec-vertical-line"></div>
+                        <div class="spec-col"><span class="spec-icon">⚙️</span><span class="spec-text">Premium</span></div>
+                    </div>
+                    <a href="https://wa.me/919099764589" target="_blank" class="vault-action-link">INQUIRE VIA WHATSAPP</a>
+                </div>
+                
             {% endif %}
-            </div>
+            
+        </div>
     </div>
 
+    <script>
+    function filterVaultBrand(selectedBrand) {
+        const cards = document.querySelectorAll('.milano-luxury-card');
+        cards.forEach(card => {
+            const productBrand = card.getAttribute('data-brand');
+            if (selectedBrand === 'all' || (productBrand && productBrand.includes(selectedBrand))) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+    </script>
 </body>
 </html>
