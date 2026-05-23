@@ -260,43 +260,40 @@
         <div class="vault-grid-title">The Masterpiece Catalog</div>
 
         <div class="milano-products-grid">
-            {% if products %}
-                {% for product in products %}
-                <div class="milano-luxury-card" data-brand="{{ product.brand | lower if product.brand else 'official' }}">
-                    
-                    <div class="luxury-img-container">
-                        <img src="{{ url_for('static', filename='images/' + product.image) if product.image else '/static/images/wac.png' }}" alt="{{ product.name }}">
-                        
-                        <div class="floating-status-tag">LIVE STOCK</div>
-                    </div>
-                    
-                    <div class="brand-badge-text">{{ product.brand if product.brand else 'OFFICIAL COLLECTION' }}</div>
-                    <div class="watch-model-title">{{ product.name }}</div>
-                    
-                    <div class="luxury-pricing-tag">DM FOR EXCLUSIVE PRICE</div>
-                    
-                    <div class="specs-quick-glance">
-                        <div class="spec-col">
-                            <span class="spec-icon">💎</span>
-                            <span class="spec-text">Sapphire Crystal</span>
-                        </div>
-                        <div class="spec-vertical-line"></div>
-                        <div class="spec-col">
-                            <span class="spec-icon">⚙️</span>
-                            <span class="spec-text">Automatic</span>
-                        </div>
-                    </div>
-                    
-                    <a href="https://wa.me/919099764589" target="_blank" class="vault-action-link">INQUIRE VIA WHATSAPP</a>
+            
+            <div class="milano-luxury-card" data-brand="rolex">
+                <div class="luxury-img-container">
+                    <img src="/static/images/wac.png" alt="Specimen">
+                    <div class="floating-status-tag">VAULT ONLY</div>
                 </div>
-                {% endfor %}
-            {% else %}
-                <div style="text-align: center; grid-column: 1/-1; color: #666; padding: 40px;">
-                    <p style="letter-spacing: 2px;">VAULT IS CURRENTLY RE-CALIBRATING...</p>
+                <div class="brand-badge-text">Rolex</div>
+                <div class="watch-model-title">Daytona Cosmograph Rose Gold</div>
+                <div class="luxury-pricing-tag">DM FOR EXCLUSIVE PRICE</div>
+                <div class="specs-quick-glance">
+                    <div class="spec-col"><span class="spec-icon">💎</span><span class="spec-text">Sapphire</span></div>
+                    <div class="spec-vertical-line"></div>
+                    <div class="spec-col"><span class="spec-icon">⚙️</span><span class="spec-text">Automatic</span></div>
                 </div>
-            {% endif %}
-        </div>
-                <div class="milano-luxury-card">
+                <a href="https://wa.me/919099764589" target="_blank" class="vault-action-link">INQUIRE VIA WHATSAPP</a>
+            </div>
+
+            <div class="milano-luxury-card" data-brand="ap">
+                <div class="luxury-img-container">
+                    <img src="/static/images/wac.png" alt="Specimen">
+                    <div class="floating-status-tag">VAULT ONLY</div>
+                </div>
+                <div class="brand-badge-text">Audemars Piguet</div>
+                <div class="watch-model-title">Royal Oak Offshore Black Dial</div>
+                <div class="luxury-pricing-tag">DM FOR EXCLUSIVE PRICE</div>
+                <div class="specs-quick-glance">
+                    <div class="spec-col"><span class="spec-icon">💎</span><span class="spec-text">Sapphire</span></div>
+                    <div class="spec-vertical-line"></div>
+                    <div class="spec-col"><span class="spec-icon">⚙️</span><span class="spec-text">Automatic</span></div>
+                </div>
+                <a href="https://wa.me/919099764589" target="_blank" class="vault-action-link">INQUIRE VIA WHATSAPP</a>
+            </div>
+
+        </div>                <div class="milano-luxury-card">
                     <div class="luxury-img-container"><span style="color:#333;">AP Specimen</span></div>
                     <div class="brand-badge-text">Audemars Piguet</div>
                     <div class="watch-model-title">Royal Oak Offshore Black Dial</div>
