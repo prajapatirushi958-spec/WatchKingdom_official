@@ -17,6 +17,79 @@
             <a href="#about-section">Our Story</a>
             <a href="#contact-section">Contact Us</a>
             <a href="#" onclick="toggleCart(true)" style="color: var(--luxury-gold); font-weight: bold;">Cart (<span id="cart-counter">0</span>)</a>
+                   <button id="vaultMegaSwitch" class="vault-capsule-btn">
+    <span class="vault-dot"></span> VAULT
+</button>
+
+<style>
+    /* Default State on White Theme */
+    .vault-capsule-btn {
+        background: #111111;
+        color: #ffffff;
+        border: none;
+        padding: 6px 16px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        border-radius: 30px; /* Pure Pill Shape like Spoyl */
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        margin-left: 15px;
+        vertical-align: middle;
+    }
+
+    /* Gold Live Pulse Dot Indicator */
+    .vault-dot {
+        width: 6px;
+        height: 6px;
+        background-color: #b39246; /* Royal Gold */
+        border-radius: 50%;
+        display: inline-block;
+        box-shadow: 0 0 8px #b39246;
+        animation: vaultPulse 1.5s infinite;
+    }
+
+    @keyframes vaultPulse {
+        0% { transform: scale(0.9); opacity: 0.6; }
+        50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 12px #b39246; }
+        100% { transform: scale(0.9); opacity: 0.6; }
+    }
+
+    /* Hover effect on regular theme */
+    .vault-capsule-btn:hover {
+        background: #b39246;
+        color: #111111;
+    }
+    .vault-capsule-btn:hover .vault-dot {
+        background-color: #111111;
+        box-shadow: none;
+    }
+
+    /* ================================================================= */
+    /* 🔮 THE PARALLEL VAULT ACTIVE STATE (When Switched) */
+    /* ================================================================= */
+    body.vault-mode-active {
+        background-color: #0d0d0d !important; /* Milano & Carren Rich Black */
+        color: #ffffff !important;
+        transition: background-color 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Active State Button Transformation (Changes to Exit look) */
+    body.vault-mode-active #vaultMegaSwitch {
+        background: #ffffff;
+        color: #111111;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+    body.vault-mode-active .vault-dot {
+        background-color: #ff3333; /* Red dot shows it can be closed */
+        box-shadow: 0 0 8px #ff3333;
+    }
+</style>
         </nav>
     </header>
 
@@ -405,5 +478,19 @@
         const observer = new MutationObserver(checkOverlapStatus);
         observer.observe(observerTarget, config);
     </script> 
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const vaultSwitch = document.getElementById('vaultMegaSwitch');
+    
+    vaultSwitch.addEventListener('click', function() {
+        document.body.classList.toggle('vault-mode-active');
+        
+        // Dynamic state check for UX feel
+        if(document.body.classList.contains('vault-mode-active')) {
+            console.log("Welcome to the Watch Kingdom Vault Universe.");
+        }
+    });
+});
+</script>
     </body>
 </html> 
