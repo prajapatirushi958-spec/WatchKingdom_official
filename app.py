@@ -187,5 +187,10 @@ def get_cart():
     total_price = sum(item['price'] * item['quantity'] for item in USER_CART.values())
     return jsonify({'items': list(USER_CART.values()), 'total': total_price})
 
+@app.route('/vault')
+def watch_vault():
+    # Agar aap database se collections fetch kar rahe ho toh yahan pass kar sakte ho
+    return render_template('vault.html')
+
 if __name__ == '__main__':
     app.run(debug=True) 
