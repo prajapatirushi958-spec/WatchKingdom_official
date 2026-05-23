@@ -306,6 +306,126 @@
             <div class="dial-filter-card" onclick="filterVaultBrand('seiko')"><div class="dial-lens-circle" style="background: radial-gradient(circle, #111 10%, #000 90%);"></div><span class="dial-label">Seiko</span></div>
         </div>
 
+        <div class="samsung-featured-arena">
+    <div class="split-bg-curve"></div>
+    <div class="featured-watches-wrap">
+        <h4 class="vault-mini-tag">🔥 THE VAULT MASTERPIECE DROPS</h4>
+        <h2 class="vault-main-headline">Curated Excellence</h2>
+        
+        <div class="samsung-triple-display">
+            <div class="featured-side-frame left-frame">
+                <img src="/static/images/r1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Premium Edition">
+            </div>
+            
+            <div class="featured-center-crown">
+                <img src="/static/images/omega1.jpeg" onerror="this.src='/static/images/wac.png'" alt="The Hero Drop">
+                <div class="crown-glow-ring"></div>
+            </div>
+            
+            <div class="featured-side-frame right-frame">
+                <img src="/static/images/seiko1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Premium Edition">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 🎨 SAMSUNG DUAL-TONE GEOMETRIC STYLING */
+    .samsung-featured-arena {
+        position: relative;
+        background: #090909;
+        padding: 60px 0;
+        margin: 40px auto;
+        border: 1px solid #141414;
+        overflow: hidden;
+        max-width: 1200px;
+    }
+    
+    .split-bg-curve {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(circle, rgba(44, 38, 26, 0.15) 0%, transparent 70%);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .featured-watches-wrap {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+
+    .vault-mini-tag {
+        color: #b39246;
+        font-size: 10px;
+        letter-spacing: 4px;
+        margin: 0;
+    }
+
+    .vault-main-headline {
+        font-family: 'Playfair Display', serif;
+        font-size: 32px;
+        font-weight: 400;
+        margin: 10px 0 40px 0;
+        letter-spacing: 2px;
+    }
+
+    .samsung-triple-display {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .featured-side-frame {
+        width: 140px;
+        height: 180px;
+        opacity: 0.3;
+        filter: blur(1px) grayscale(50%);
+        transition: all 0.4s ease;
+    }
+
+    .featured-side-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .featured-center-crown {
+        position: relative;
+        width: 220px;
+        height: 280px;
+        transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .featured-center-crown img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        position: relative;
+        z-index: 3;
+        filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
+    }
+
+    .featured-center-crown:hover {
+        transform: scale(1.05) translateY(-5px);
+    }
+
+    /* 📱 MOBILE ARCHITECTURE RESCUE */
+    @media (max-width: 768px) {
+        .samsung-triple-display { gap: 15px; }
+        .featured-side-frame { width: 80px; height: 110px; }
+        .featured-center-crown { width: 140px; height: 180px; }
+        .vault-main-headline { font-size: 24px; }
+    }
+</style>
+
         <div class="vault-grid-title">The Masterpiece Catalog</div>
 
         <div class="milano-products-grid">
@@ -328,9 +448,22 @@
                     <div class="luxury-pricing-tag">DM FOR EXCLUSIVE PRICE</div>
                     
                     <div class="specs-quick-glance">
-                        <div class="spec-col"><span class="spec-icon">💎</span><span class="spec-text">Sapphire</span></div>
-                        <div class="spec-vertical-line"></div>
-                        <div class="spec-col"><span class="spec-icon">⚙️</span><span class="spec-text">Automatic</span></div>
+                        {% if product.specs %}
+                            {% set spec_list = product.specs.split('|') %}
+                            <div class="spec-col">
+                                <span class="spec-icon">📐</span>
+                                <span class="spec-text">{{ spec_list[0] if spec_list|length > 0 else 'Premium' }}</span>
+                            </div>
+                            <div class="spec-vertical-line"></div>
+                            <div class="spec-col">
+                                <span class="spec-icon">⚙️</span>
+                                <span class="spec-text">{{ spec_list[1] if spec_list|length > 1 else 'Mechanical' }}</span>
+                            </div>
+                        {% else %}
+                            <div class="spec-col"><span class="spec-icon">💎</span><span class="spec-text">Sapphire</span></div>
+                            <div class="spec-vertical-line"></div>
+                            <div class="spec-col"><span class="spec-icon">⚙️</span><span class="spec-text">Automatic</span></div>
+                        {% endif %}
                     </div>
                     <a href="https://wa.me/919099764589" target="_blank" class="vault-action-link">INQUIRE VIA WHATSAPP</a>
                 </div>
@@ -361,12 +494,20 @@
     <script>
     function filterVaultBrand(selectedBrand) {
         const cards = document.querySelectorAll('.milano-luxury-card');
+        const labels = document.querySelectorAll('.dial-filter-card');
+        
+        // Remove active state color from all slider dials
+        labels.forEach(l => l.style.borderBottom = "none");
+        
         cards.forEach(card => {
             const productBrand = card.getAttribute('data-brand');
             if (selectedBrand === 'all' || (productBrand && productBrand.includes(selectedBrand))) {
                 card.style.display = 'block';
+                setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'scale(1)'; }, 10);
             } else {
-                card.style.display = 'none';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => { card.style.display = 'none'; }, 300);
             }
         });
     }
