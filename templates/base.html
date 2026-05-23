@@ -17,9 +17,70 @@
             <a href="#about-section">Our Story</a>
             <a href="#contact-section">Contact Us</a>
             <a href="#" onclick="toggleCart(true)" style="color: var(--luxury-gold); font-weight: bold;">Cart (<span id="cart-counter">0</span>)</a>
-                   <a href="/vault" class="vault-capsule-btn" style="text-decoration: none !important;">
-    <span class="vault-dot"></span> VAULT
-</a> 
+                   <a href="/vault" class="vault-highlight-btn" style="text-decoration: none !important;">
+    <span class="vault-glow-dot"></span>VAULT
+</a>
+
+<style>
+    /* 🔥 PURE DYNAMIC PULSE GLOW STYLE (EASY INJECT) */
+    .vault-highlight-btn {
+        background: #0d0d0d;
+        color: #ffffff !important;
+        border: 2px solid var(--luxury-gold); /* Aapka existing green border use karega */
+        padding: 5px 14px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        border-radius: 30px; /* Capsule pill shape like Spoyl */
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.3s ease;
+        vertical-align: middle;
+        margin-left: 15px;
+        
+        /* 🚨 Asli glow activation (Pulse) */
+        box-shadow: 0 0 10px rgba(179,146,70,0.3); /* existing green borders look */
+        animation: vaultPulseGreen 1.5s infinite;
+    }
+
+    /* Green Pulse Dot */
+    .vault-glow-dot {
+        width: 6px;
+        height: 6px;
+        background-color: var(--luxury-gold); /* existing green border look */
+        border-radius: 50%;
+        box-shadow: 0 0 8px var(--luxury-gold);
+        display: inline-block;
+    }
+
+    @keyframes vaultPulseGreen {
+        0% { transform: scale(0.95); box-shadow: 0 0 10px rgba(179,146,70,0.2); }
+        50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(179,146,70,0.5); }
+        100% { transform: scale(0.95); box-shadow: 0 0 10px rgba(179,146,70,0.2); }
+    }
+
+    /* Hover effect */
+    .vault-highlight-btn:hover {
+        background: var(--luxury-gold);
+        color: #111111 !important;
+        box-shadow: 0 0 30px rgba(179,146,70,0.6);
+        transform: translateY(-1px);
+    }
+    .vault-highlight-btn:hover .vault-glow-dot {
+        background-color: #111111;
+        box-shadow: none;
+    }
+
+    /* Mobile fit */
+    @media (max-width: 768px) {
+        .vault-highlight-btn {
+            margin-left: 0;
+            padding: 8px 18px;
+            font-size: 10px;
+        }
+    }
+</style>
         </nav>
     </header>
 
