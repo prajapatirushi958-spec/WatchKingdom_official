@@ -409,19 +409,5 @@
         const observer = new MutationObserver(checkOverlapStatus);
         observer.observe(observerTarget, config);
     </script> 
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const vaultSwitch = document.getElementById('vaultMegaSwitch');
-    
-    vaultSwitch.addEventListener('click', function() {
-        document.body.classList.toggle('vault-mode-active');
-        
-        // Dynamic state check for UX feel
-        if(document.body.classList.contains('vault-mode-active')) {
-            console.log("Welcome to the Watch Kingdom Vault Universe.");
-        }
-    });
-});
-</script>
-    </body>
+        </body>
 </html> 
