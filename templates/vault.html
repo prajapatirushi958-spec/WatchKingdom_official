@@ -804,6 +804,64 @@
     50% { transform: translateY(-10px) rotate(1deg); }
     100% { transform: translateY(0px) rotate(0deg); }
 }
+
+
+
+    /* ================================================================= */
+/* 📱 CRITICAL ULTRA-LUXURY MOBILE RESPONSIVE FIX */
+/* ================================================================= */
+@media (max-width: 768px) {
+    /* 1. Left aur Right planets ko mobile par hide karo taaki spacing na bigde */
+    .space-orbit-arena .orbit-side-planet {
+        display: none !important; 
+    }
+
+    /* 2. Main outer wrapper ki height aur padding compact karo */
+    .space-orbit-arena {
+        padding: 40px 15px !important;
+        height: auto;
+        min-height: 480px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 3. Center panel ko poori responsive width do */
+    .space-orbit-arena .orbit-universe-display {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .space-orbit-arena .orbit-center-hero {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* 4. Main headline font size thoda chota karo responsive dikhne ke liye */
+    .space-orbit-arena .orbit-hero-title {
+        font-size: 32px !important;
+        letter-spacing: 6px !important;
+    }
+
+    /* 5. Watch image sphere size mobile screen ke compatible set karo */
+    .space-orbit-arena .hero-image-sphere {
+        width: 180px !important;
+        height: 180px !important;
+        margin: 15px 0 !important;
+    }
+
+    /* 6. Video frame ko control karo taaki side cards responsive load lein */
+    .space-orbit-arena .orbit-video-bg {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+}
+
+        
     </style>
 </head>
 <body>
