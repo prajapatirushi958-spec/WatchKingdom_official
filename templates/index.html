@@ -8,6 +8,15 @@
 </div>
 
 <section class="hero" style="padding: 80px 20px 40px 20px; text-align: center; background: radial-gradient(circle, #fafafa 0%, #ffffff 100%);">
+    <div class="hero-emblem-wrapper">
+    <div class="emblem-axis-line left-axis"></div>
+    
+    <div class="brand-core-lens">
+        <img src="{{ url_for('static', filename='images/wac.png') }}" onerror="this.src='/static/images/wac.png'" alt="Watch Kingdom Emblem">
+    </div>
+    
+    <div class="emblem-axis-line right-axis"></div>
+</div>
     <h1 style="font-size: 42px; font-weight: 300; letter-spacing: 6px; margin-bottom: 10px;">THE ART OF HOROLOGY</h1>
     <p style="color: var(--text-muted); letter-spacing: 3px; font-size: 13px; font-weight: 300; text-transform: uppercase;">Curated Luxury Timepieces for the Modern Kingdom</p>
 </section>
@@ -188,6 +197,71 @@
         z-index: 100;
         text-align: center;
     }
+    /* ================================================================= */
+/* ✨ MINIMALIST LOGO EMBLEM HERO ARCHITECTURE */
+/* ================================================================= */
+.hero-emblem-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 0 auto 30px auto;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Elegant Thin Horizontal Symmetry Lines */
+.emblem-axis-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to var(--axis-direction, right), transparent, #e5e5e5);
+}
+.left-axis { --axis-direction: right; }
+.right-axis { --axis-direction: left; }
+
+/* The Premium Rounded Logo Badge */
+.brand-core-lens {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #000000;
+    border: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 0 15px rgba(179, 146, 70, 0.05);
+    transition: all 0.4s ease;
+}
+
+.brand-core-lens img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+/* Micro luxury feedback loop on hover */
+.hero-emblem-wrapper:hover .brand-core-lens {
+    border-color: #b39246;
+    box-shadow: 0 0 25px rgba(179, 146, 70, 0.25);
+    transform: scale(1.03);
+}
+
+/* Mobile Friendly Constraints */
+@media (max-width: 768px) {
+    .hero-emblem-wrapper {
+        gap: 12px;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+    .brand-core-lens {
+        width: 60px;
+        height: 60px;
+    }
+}
 </style>
 
 <div class="instagram-stories-tray">
