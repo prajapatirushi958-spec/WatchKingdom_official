@@ -503,9 +503,113 @@
             .carren-image-showcase { height: 280px; order: -1; }
             .matrix-row { font-size: 10px; padding: 12px 0; }
         }
+        /* ⚙️ MECHANICAL ENGINE OVERLAY DESIGN */
+.caliber-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #070707;
+    z-index: 99999; /* Sabse upar dikhega */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.6s;
+}
+
+/* Mechanical Engine Wrapper */
+.mechanical-engine-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 30px;
+}
+
+/* Outer Toothed Wheel */
+.gear-outer-rim {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px dashed #b39246;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(179,146,70,0.2);
+    animation: tourbillonClockwise 4s linear infinite;
+}
+
+/* Inner Balance Wheel Wheel */
+.gear-inner-escapement {
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    border: 2px solid #ffffff;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: tourbillonCounter 1.5s ease-in-out infinite;
+}
+
+/* Center Ruby Jewel */
+.gear-center-jewel {
+    position: absolute;
+    top: 42%;
+    left: 42%;
+    width: 16%;
+    height: 16%;
+    background: radial-gradient(circle, #ff1e56 40%, #b3002d 90%);
+    border-radius: 50%;
+    box-shadow: 0 0 15px #ff1e56;
+}
+
+/* Luxury Typography */
+.loader-luxury-text {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin: 10px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.loader-luxury-sub {
+    color: #444444;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* Animations */
+@keyframes tourbillonClockwise {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes tourbillonCounter {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(-180deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Fade Out Class */
+.caliber-overlay.vault-loaded {
+    opacity: 0;
+    visibility: hidden;
+}
     </style>
 </head>
 <body>
+    <div id="vaultCaliberLoader" class="caliber-overlay">
+    <div class="mechanical-engine-wrap">
+        <div class="gear-outer-rim"></div>
+        <div class="gear-inner-escapement"></div>
+        <div class="gear-center-jewel"></div>
+    </div>
+    <h2 class="loader-luxury-text">CALIBRATING VAULT UNIVERSE</h2>
+    <p class="loader-luxury-sub">SECURE HOROLOGY ENGINE ACTIVE</p>
+</div>
 
     <header class="vault-header">
         <a href="/" class="vault-logo">WATCH KINGDOM <span>VAULT</span></a>
@@ -659,6 +763,15 @@
             }
         });
     }
+        // ⏱️ AUTOMATIC TIMEOUT TO FADE ENGINE OVERLAY
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        const loader = document.getElementById('vaultCaliberLoader');
+        if(loader) {
+            loader.classList.add('vault-loaded');
+        }
+    }, 1500); // 1.5 Seconds ka premium delay
+});
     </script>
 </body>
 </html>
