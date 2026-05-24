@@ -197,5 +197,10 @@ def watch_vault():
     
     # Hum seedha yahi real array dynamic matrix vault.html ko de rahe hain
     return render_template('vault.html', products=all_products)
+
+@app.route('/wishlist')
+def wishlist():
+    # Abhi ke liye ye direct aapka wishlist page render karega
+    return render_template('wishlist.html') 
 if __name__ == '__main__':
     app.run(debug=True) 
