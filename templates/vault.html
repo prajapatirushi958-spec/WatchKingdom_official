@@ -664,27 +664,61 @@
         /* ================================================================= */
 /* 🌌 METALLIC COSMIC VIDEO SLIDER STYLING ENGINE */
 /* ================================================================= */
+/* ================================================================= */
+/* 🌌 FIX SYSTEM: METALLIC COSMIC VIDEO SLIDER FIXED GRID */
+/* ================================================================= */
 .space-orbit-arena {
     position: relative;
     background: #050507;
-    padding: 100px 0;
+    padding: 60px 0;
     margin: 40px auto;
     border: 1px solid #141419;
     overflow: hidden;
     max-width: 1200px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Perfect Background Video Sync */
+/* Stable Absolute Video Background (Zero Flex Disruption) */
 .orbit-video-bg {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%; min-height: 100%;
-    width: auto; height: auto;
-    z-index: 1; object-fit: cover;
-    opacity: 0.45; /* Dark rich colors blend */
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    z-index: 1; 
+    object-fit: cover;
+    opacity: 0.45;
     pointer-events: none;
 }
 
+/* Content Wrapper ko relative bitha kar absolute boundaries se lock kiya */
+.orbit-content-wrap { 
+    position: relative; 
+    z-index: 5; 
+    width: 100%;
+}
+
+/* Universe display engine adjustment */
+.orbit-universe-display { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Center Crown fixed dimensions for safe layout */
+.orbit-center-hero { 
+    width: 100%;
+    max-width: 440px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin: 0 auto;
+}
 /* Cinematic Dark Vignette (Luxury Shading Secret) */
 .luxury-vignette-shading {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -802,13 +836,11 @@
         </div>
 
         <div class="space-orbit-arena">
-    
-    <video autoplay muted loop playsinline class="orbit-video-bg">
+         <video autoplay muted loop playsinline class="orbit-video-bg">
         <source src="{{ url_for('static', filename='images/vault-hero.mp4') }}" type="video/mp4">
-    </video>
-    
-    <div class="cosmic-dust-bg"></div>
-    <div class="luxury-vignette-shading"></div>
+        </video>
+        <div class="cosmic-dust-bg"></div>
+        <div class="luxury-vignette-shading"></div>
     
     <div class="orbit-content-wrap">
         <div class="orbit-universe-display">
