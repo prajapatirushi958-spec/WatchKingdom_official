@@ -598,6 +598,68 @@
     opacity: 0;
     visibility: hidden;
 }
+
+        /* 🔮 DYNAMIC REVEAL SLIT INTERACTION ENGINE */
+.reveal-engine-container {
+    position: relative;
+    width: 220px;
+    height: 280px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #1a1a1a;
+}
+
+.reveal-layer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Layer positions and clippings */
+.finished-view { z-index: 2; }
+.blueprint-view { 
+    z-index: 3; 
+    background: #090909;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); 
+}
+
+/* The vertical shiny divider slider bar */
+.reveal-slider-slit {
+    position: absolute;
+    top: 0; left: 100%;
+    width: 2px; height: 100%;
+    background: linear-gradient(180deg, transparent, #b39246, transparent);
+    box-shadow: 0 0 10px #b39246;
+    z-index: 4;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Float floating text badge instruction overlay */
+.reveal-badge-tag {
+    position: absolute;
+    bottom: 12px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 8px; letter-spacing: 2px;
+    background: rgba(0,0,0,0.8);
+    color: #888; padding: 4px 10px;
+    border-radius: 20px; font-weight: 600;
+    z-index: 5; pointer-events: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+/* 🔥 THE REVEAL HOVER TRANSITION HOOK (Auto Slits Blueprint) */
+.reveal-engine-container:hover .blueprint-view {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); /* Shifting mask grid layout to reveal live gold finished image */
+}
+.reveal-engine-container:hover .reveal-slider-slit {
+    left: 0%;
+}
+.reveal-engine-container:hover .reveal-badge-tag {
+    color: #b39246;
+} 
     </style>
 </head>
 <body>
@@ -640,10 +702,19 @@
                         <img src="/static/images/r1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Premium Edition">
                     </div>
                     
-                    <div class="featured-center-crown">
-                        <img src="/static/images/omega1.jpeg" onerror="this.src='/static/images/wac.png'" alt="The Hero Drop">
-                        <div class="crown-glow-ring"></div>
-                    </div>
+                    <div class="featured-center-crown reveal-engine-container">
+    
+    <div class="reveal-layer finished-view">
+        <img src="/static/images/omega1.jpeg" onerror="this.src='/static/images/wac.png'" alt="The Hero Finished Drop">
+    </div>
+
+    <div class="reveal-layer blueprint-view">
+        <img src="/static/images/omega1.jpeg" onerror="this.src='/static/images/wac.png'" alt="The Hero Blueprint Drop" style="filter: grayscale(1) brightness(0.4) contrast(1.2) opacity(0.4);">
+    </div>
+
+    <div class="reveal-slider-slit"></div>
+    <span class="reveal-badge-tag">SWIPE IMAGE</span>
+</div>
                     
                     <div class="featured-side-frame right-frame">
                         <img src="/static/images/seiko1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Premium Edition">
