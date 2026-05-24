@@ -660,6 +660,116 @@
 .reveal-engine-container:hover .reveal-badge-tag {
     color: #b39246;
 } 
+
+        /* ================================================================= */
+/* 🌌 METALLIC COSMIC VIDEO SLIDER STYLING ENGINE */
+/* ================================================================= */
+.space-orbit-arena {
+    position: relative;
+    background: #050507;
+    padding: 100px 0;
+    margin: 40px auto;
+    border: 1px solid #141419;
+    overflow: hidden;
+    max-width: 1200px;
+}
+
+/* Perfect Background Video Sync */
+.orbit-video-bg {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+    z-index: 1; object-fit: cover;
+    opacity: 0.45; /* Dark rich colors blend */
+    pointer-events: none;
+}
+
+/* Cinematic Dark Vignette (Luxury Shading Secret) */
+.luxury-vignette-shading {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, transparent 20%, rgba(5,5,7,0.85) 90%);
+    z-index: 2; pointer-events: none;
+}
+
+.cosmic-dust-bg {
+    position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+    background-image: radial-gradient(rgba(179, 146, 70, 0.08) 1px, transparent 0);
+    background-size: 30px 30px; opacity: 0.5; z-index: 2;
+}
+
+.orbit-content-wrap { position: relative; z-index: 3; }
+
+/* Frosted Glass Floating Planets Setup */
+.orbit-side-planet {
+    position: relative; width: 160px; height: 160px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.35; filter: blur(0.8px);
+}
+.glass-planet-blur {
+    position: absolute; width: 100%; height: 100%; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.01); backdrop-filter: blur(5px);
+    box-shadow: inset 0 0 20px rgba(255,255,255,0.05); z-index: 1;
+}
+.orbit-side-planet img { width: 70%; height: 70%; object-fit: contain; position: relative; z-index: 2; filter: drop-shadow(0 10px 20px #000); }
+
+.left-planet { transform: translateX(-30px); }
+.right-planet { transform: translateX(30px); }
+
+.planet-shadow-tag {
+    position: absolute; font-size: 8px; letter-spacing: 4px; color: #555;
+    font-weight: 700; bottom: -30px; white-space: nowrap; transition: color 0.3s ease;
+}
+
+/* Center Crown Planet with Quantum Gold aura ring */
+.orbit-center-hero { width: 440px; display: flex; flex-direction: column; align-items: center; }
+.orbit-mini-tag { color: #b39246; font-size: 9px; letter-spacing: 6px; font-weight: 700; margin-bottom: 15px; text-shadow: 0 0 10px rgba(179,146,70,0.2); }
+.orbit-hero-title { font-family: 'Montserrat', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: 10px; margin: 0; color: #fff; }
+
+.hero-image-sphere {
+    position: relative; width: 260px; height: 260px; margin: 15px 0;
+    display: flex; align-items: center; justify-content: center;
+}
+.quantum-glow-ring {
+    position: absolute; width: 85%; height: 85%; border-radius: 50%;
+    border: 1px dashed rgba(179, 146, 70, 0.2);
+    box-shadow: 0 0 40px rgba(179, 146, 70, 0.08);
+    animation: spinRing 20s linear infinite;
+}
+.hero-image-sphere img {
+    width: 90%; height: 90%; object-fit: contain; position: relative; z-index: 5;
+    filter: drop-shadow(0 25px 50px rgba(0,0,0,0.95));
+    animation: luxuryFloat 4s ease-in-out infinite;
+}
+
+.orbit-hero-desc { font-family: 'Playfair Display', serif; font-style: italic; color: #aaa; font-size: 14px; margin: 0 0 30px 0; letter-spacing: 1px; }
+
+/* High-End Liquid Gold Button */
+.orbit-hero-btn {
+    position: relative; background: #000000; color: #ffffff;
+    border: 1px solid #b39246; padding: 14px 32px; font-size: 10px;
+    font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    text-decoration: none; overflow: hidden; transition: all 0.4s ease;
+}
+.orbit-hero-btn:hover {
+    color: #000000; background: #b39246;
+    box-shadow: 0 0 30px rgba(179,146,70,0.5);
+    transform: translateY(-2px);
+}
+
+/* Interaction Hover physics */
+.orbit-universe-display:hover .orbit-side-planet { opacity: 0.6; filter: blur(0); }
+.orbit-side-planet:hover { opacity: 1 !important; border-color: #b39246; transform: scale(1.05) !important; }
+.orbit-side-planet:hover .planet-shadow-tag { color: #b39246; }
+
+@keyframes spinRing { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes luxuryFloat {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
     </style>
 </head>
 <body>
@@ -691,17 +801,49 @@
             <div class="dial-filter-card" onclick="filterVaultBrand('seiko')"><div class="dial-lens-circle" style="background: radial-gradient(circle, #111 10%, #000 90%);"></div><span class="dial-label">Seiko</span></div>
         </div>
 
-        <div class="samsung-featured-arena">
-            <div class="split-bg-curve"></div>
-            <div class="featured-watches-wrap">
-                <h4 class="vault-mini-tag">🔥 THE VAULT MASTERPIECE DROPS</h4>
-                <h2 class="vault-main-headline">Curated Excellence</h2>
+        <div class="space-orbit-arena">
+    
+    <video autoplay muted loop playsinline class="orbit-video-bg">
+        <source src="{{ url_for('static', filename='images/vault-hero.mp4') }}" type="video/mp4">
+    </video>
+    
+    <div class="cosmic-dust-bg"></div>
+    <div class="luxury-vignette-shading"></div>
+    
+    <div class="orbit-content-wrap">
+        <div class="orbit-universe-display">
+            
+            <div class="orbit-side-planet left-planet">
+                <div class="glass-planet-blur"></div>
+                <span class="planet-shadow-tag">RADO • AUTOMATIC</span>
+                <img src="/static/images/r1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Rado">
+            </div>
+            
+            <div class="orbit-center-hero">
+                <span class="orbit-mini-tag">👑 HOROLOGY SPECIAL DROP</span>
+                <h1 class="orbit-hero-title">OMEGA</h1>
                 
-                <div class="samsung-triple-display">
-                    <div class="featured-side-frame left-frame">
-                        <img src="/static/images/r1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Premium Edition">
-                    </div>
-                    
+                <div class="hero-image-sphere">
+                    <div class="quantum-glow-ring"></div>
+                    <img src="/static/images/omega1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Omega Main">
+                </div>
+                
+                <p class="orbit-hero-desc">Speedmaster Snoopy Silver Masterpiece Edition</p>
+                
+                <a href="https://wa.me/919099764589" target="_blank" class="orbit-hero-btn">
+                    <span>SECURE THIS DROP VIA WHATSAPP</span>
+                </a>
+            </div>
+            
+            <div class="orbit-side-planet right-planet">
+                <div class="glass-planet-blur"></div>
+                <span class="planet-shadow-tag">SEIKO • SPORTS</span>
+                <img src="/static/images/seiko1.jpeg" onerror="this.src='/static/images/wac.png'" alt="Seiko">
+            </div>
+            
+        </div>
+    </div>
+</div>                     
                     <div class="featured-center-crown reveal-engine-container">
     
     <div class="reveal-layer finished-view">
