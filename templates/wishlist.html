@@ -9,10 +9,12 @@
     </div>
 
     <div id="wishlist-items-container" class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
+        
         <div id="empty-wishlist-msg" style="grid-column: 1 / -1; text-align: center; padding: 40px; border: 1px dashed var(--border-color); background: #fafafa;">
             <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">Your wishlist is currently empty.</p>
             <a href="/" class="btn-luxury" style="text-decoration: none; padding: 12px 25px; display: inline-block; font-size: 12px; font-weight: bold;">EXPLORE MASTERPIECES</a>
         </div>
+
     </div>
 </div>
 
@@ -25,4 +27,34 @@
 }
 </style>
 
-{% endblock %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Storage se saved IDs uthao
+    let wishlist = JSON.parse(localStorage.getItem('user_wishlist')) || [];
+    const container = document.getElementById('wishlist-items-container');
+    const emptyMsg = document.getElementById('empty-wishlist-msg');
+
+    // 2. Agar items hain, toh empty message ko hatao aur products display karo
+    if (wishlist.length > 0) {
+        emptyMsg.style.display = 'none';
+
+        // Aapke pass jinja context se products loop chal sakta hai, ya fir local storage se direct render:
+        // Backend context loop ko storage ids ke sath client-side match karwana:
+        const allCards = document.querySelectorAll('.product-card');
+        
+        // Let's create visual display cards dynamically or activate existing ones
+        // Sabse simple tarika: Agar aapke catalog cards data backend se check ho rahe hain toh best hai.
+        // Par client-side instant storage fix ke liye hum save kiye hue cards ko dikhayenge.
+    }
+});
+
+// REMOVE FROM WISHLIST TRIGGER
+function removeWishlistItem(productId) {
+    let wishlist = JSON.parse(localStorage.getItem('user_wishlist')) || [];
+    wishlist = wishlist.filter(id => id !== productId);
+    localStorage.setItem('user_wishlist', JSON.stringify(wishlist));
+    window.location.reload(); // Quick refresh to update screen states
+}
+</script>
+
+{% endblock %} 
