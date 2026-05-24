@@ -8,20 +8,131 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-    <a href="/" style="text-decoration: none; color: #111; font-weight: 600; letter-spacing: 2px;">WATCH KINGDOM</a>
-</div>
-               <nav>
-            <a href="/">Collections</a>
-            <a href="#about-section">Our Story</a>
-            <a href="#contact-section">Contact Us</a>
-            <a href="#" onclick="toggleCart(true)" style="color: var(--luxury-gold); font-weight: bold;">Cart (<span id="cart-counter">0</span>)</a>
-                   <a href="/vault" class="vault-highlight-btn" style="text-decoration: none !important;">
-    <span class="vault-glow-dot"></span>VAULT
-</a>
+    <header style="background: #0f0f0f; border-bottom: 1px solid #161616; position: sticky; top: 0; width: 100%; z-index: 9999;">
+        <div style="max-width: 1300px; margin: 0 auto; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+            
+            <div class="logo">
+                <a href="/" style="text-decoration: none; color: #ffffff; font-weight: 600; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">WATCH KINGDOM</a>
+            </div>
+
+            <nav class="desktop-nav-menu">
+                <a href="/">Collections</a>
+                <a href="#about-section">Our Story</a>
+                <a href="#contact-section">Contact Us</a>
+                <a href="#" onclick="toggleCart(true)" style="color: var(--luxury-gold); font-weight: bold;">Cart (<span id="cart-counter">0</span>)</a>
+                <a href="/vault" class="vault-highlight-btn" style="text-decoration: none !important;">
+                    <span class="vault-glow-dot"></span>VAULT
+                </a>
+            </nav>
+
+            <button class="luxury-hamburger-trigger" onclick="toggleMobileMenu()">☰</button>
+
+        </div>
+    </header>
+
+    <div id="mobileLuxuryDrawer" class="mobile-side-drawer">
+        <button class="close-drawer-btn" onclick="toggleMobileMenu()">✕</button>
+        <div class="drawer-links-wrapper">
+            <a href="/" onclick="toggleMobileMenu()">Collections</a>
+            <a href="#about-section" onclick="toggleMobileMenu()">Our Story</a>
+            <a href="#contact-section" onclick="toggleMobileMenu()">Contact Us</a>
+            <a href="#" onclick="toggleMobileMenu(); toggleCart(true)" style="color: var(--luxury-gold); font-weight: bold;">Cart (<span id="mobile-cart-counter">0</span>)</a>
+            <a href="/vault" onclick="toggleMobileMenu()" style="color: #b39246; font-weight: 700; border: 1px dashed #b39246; padding: 10px; text-align: center; margin-top: 15px;">👑 OPEN THE VAULT</a>
+        </div>
+    </div> 
 
 <style>
+    /* ================================================================= */
+        /* 📱 RESPONSIVE MENU ENGINE & SLIDING SIDEBAR DRAWER */
+        /* ================================================================= */
+        .desktop-nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .desktop-nav-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        .desktop-nav-menu a:hover {
+            color: #b39246;
+        }
+
+        /* Mobile Hamburger trigger customization */
+        .luxury-hamburger-trigger {
+            display: none;
+            background: transparent;
+            color: #b39246;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 10001;
+        }
+
+        /* 🖤 FROSTED DRAWER LAYOUT SPECIFICATIONS */
+        .mobile-side-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Shuru me hidden rahega screen ke bahar */
+            width: 290px;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            border-left: 1px solid #161616;
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px 40px;
+            box-sizing: border-box;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-side-drawer.drawer-active {
+            right: 0;
+            box-shadow: -20px 0 50px rgba(0,0,0,0.9);
+        }
+        .close-drawer-btn {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: transparent;
+            color: #888;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .drawer-links-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        .drawer-links-wrapper a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .drawer-links-wrapper a:hover {
+            color: #b39246;
+            padding-left: 6px;
+        }
+
+        /* 🔥 MOBILE MEDIA BREAKPOINT FORCE OVERRIDE */
+        @media (max-width: 768px) {
+            .desktop-nav-menu {
+                display: none !important; /* Mobile screen par direct horizontal layout hide */
+            }
+            .luxury-hamburger-trigger {
+                display: block !important; /* Mobile standard lines icon visible */
+            }
+        }
     /* 🔥 PURE DYNAMIC PULSE GLOW STYLE (EASY INJECT) */
     .vault-highlight-btn {
         background: #0d0d0d;
@@ -469,5 +580,14 @@
         const observer = new MutationObserver(checkOverlapStatus);
         observer.observe(observerTarget, config);
     </script> 
+    <script>
+// 📱 SYSTEM TRIGGER: OPEN OR CLOSE THE MOBILE SIDE MENU DRAWER
+function toggleMobileMenu() {
+    const drawer = document.getElementById('mobileLuxuryDrawer');
+    if (drawer) {
+        drawer.classList.toggle('drawer-active');
+    }
+}
+</script> 
         </body>
 </html> 
