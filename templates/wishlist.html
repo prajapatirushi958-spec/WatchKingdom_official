@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style="max-width: 1100px; margin: 60px auto; padding: 0 20px; min-height: 60vh;">
+    <div style="text-align: center; margin-bottom: 50px;">
+        <span style="color: var(--luxury-gold); letter-spacing: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase;">Your Curated Vault</span>
+        <h1 style="font-size: 36px; font-weight: 300; margin: 10px 0; letter-spacing: 1px; color: var(--text-main);">MY WISHLIST</h1>
+        <p style="color: var(--text-muted); font-size: 14px; letter-spacing: 1px;">Timepieces you desire to secure for your kingdom</p>
+    </div>
+
+    <div id="wishlist-items-container" class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px;">
+        <div id="empty-wishlist-msg" style="grid-column: 1 / -1; text-align: center; padding: 40px; border: 1px dashed var(--border-color); background: #fafafa;">
+            <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">Your wishlist is currently empty.</p>
+            <a href="/" class="btn-luxury" style="text-decoration: none; padding: 12px 25px; display: inline-block; font-size: 12px; font-weight: bold;">EXPLORE MASTERPIECES</a>
+        </div>
+    </div>
+</div>
+
+<style>
+@media (max-width: 768px) {
+    #wishlist-items-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+    }
+}
+</style>
+
+{% endblock %}
