@@ -461,6 +461,45 @@
         if (e.target === overlayModal) {
             shutdownInstaStory();
         }
+
+    // ❤️ FRONTEND WISHLIST STORAGE ENGINE
+function toggleWishlist(productId, buttonElement) {
+    // LocalStorage se purani wishlist uthao ya khali array banao
+    let wishlist = JSON.parse(localStorage.getItem('user_wishlist')) || [];
+    
+    // Check karo agar watch pehle se wishlist mein hai
+    const index = wishlist.indexOf(productId);
+    
+    if (index === -1) {
+        // Agar nahi hai, toh add karo
+        wishlist.push(productId);
+        buttonElement.innerText = '♥'; // Red/solid heart fill
+        buttonElement.style.color = '#ff3366';
+    } else {
+        // Agar pehle se hai, toh click karne par remove karo
+        wishlist.splice(index, 1);
+        buttonElement.innerText = '♡'; // Empty heart outline
+        buttonElement.style.color = '#111111';
+    }
+    
+    // Nayi wishlist ko browser memory mein save karo
+    localStorage.setItem('user_wishlist', JSON.stringify(wishlist));
+    
+    // Counter badge ko update karo
+    updateWishlistCounter();
+}
+
+// 📊 WISHLIST COUNTER BADGE UPDATER
+function updateWishlistCounter() {
+    let wishlist = JSON.parse(localStorage.getItem('user_wishlist')) || [];
+    const countElement = document.getElementById('wishlist-count');
+    if (countElement) {
+        countElement.innerText = wishlist.length;
+    }
+}
+
+// Page load hote hi counter update karo
+document.addEventListener('DOMContentLoaded', updateWishlistCounter);    
     });
 </script>
 <section style="max-width: 1100px; margin: 0 auto 50px auto; padding: 30px; background: #ffffff; border: 1px solid var(--border-color); border-left: 4px solid var(--luxury-gold); text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
