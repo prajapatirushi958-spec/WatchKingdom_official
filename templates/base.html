@@ -363,31 +363,31 @@ html, body {
         <div class="luxury-deck-wrapper">
 
     <div class="luxury-category-horizontal-tray">
-        <div class="category-node-pill active-pill">
+        <div class="category-node-pill active-pill" onclick="executeSmartTextFilter('all', this)">
             <div class="pill-avatar-icon" style="background-image: url('/static/images/slider1.jpeg');"></div>
             <span>For You</span>
         </div>
-        <div class="category-node-pill">
+        <div class="category-node-pill" onclick="executeSmartTextFilter('rolex', this)">
             <div class="pill-avatar-icon" style="background-image: url('/static/images/slider2.jpeg');"></div>
             <span>Rolex</span>
         </div>
-        <div class="category-node-pill">
+        <div class="category-node-pill" onclick="executeSmartTextFilter('omega', this)">
             <div class="pill-avatar-icon" style="background-image: url('/static/images/slider3.jpeg');"></div>
             <span>Omega</span>
         </div>
-        <div class="category-node-pill">
+        <div class="category-node-pill" onclick="executeSmartTextFilter('hublot', this)">
             <div class="pill-avatar-icon" style="background-image: url('/static/images/slider4.jpeg');"></div>
             <span>Hublot</span>
         </div>
-        <div class="category-node-pill">
-            <div class="pill-avatar-icon" style="background-image: url('/static/images/sslider5.jpeg');"></div>
+        <div class="category-node-pill" onclick="executeSmartTextFilter('rado', this)">
+            <div class="pill-avatar-icon" style="background-image: url('/static/images/slider5.jpeg');"></div>
             <span>Rado</span>
         </div>
-        <div class="category-node-pill">
+        <div class="category-node-pill" onclick="executeSmartTextFilter('casio', this)">
             <div class="pill-avatar-icon" style="background-image: url('/static/images/slider6.jpeg');"></div>
             <span>Casio</span>
         </div>
-        <div class="category-node-pill">
+        <div class="category-node-pill" onclick="executeSmartTextFilter('seiko', this)">
             <div class="pill-avatar-icon" style="background-image: url('/static/images/slider7.jpeg');"></div>
             <span>Seiko</span>
         </div>
@@ -399,7 +399,7 @@ html, body {
             <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider2.jpeg') }}"></div>
             <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider3.jpeg') }}"></div>
             <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider4.jpeg') }}"></div>
-            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/sslider5.jpeg') }}"></div>
+            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider5.jpeg') }}"></div>
             <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider6.jpeg') }}"></div>
             <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider7.jpeg') }}"></div>
             <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider8.jpeg') }}"></div>
@@ -773,7 +773,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const layoutWidthFactor = window.innerWidth <= 768 ? 87 : 86;
             trackBlock.style.transform = `translateX(-${baseCurrentIdx * layoutWidthFactor}%)`;
-            globalDots[baseCurrentIdx].add('active-c-dot');
+            globalDots[baseCurrentIdx].classList.add('active-c-dot');
         }
 
         function jumpToBaseSlider(targetIdx) {
@@ -790,5 +790,45 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script> 
+
+<script>
+function executeSmartTextFilter(brandKeyword, clickedElement) {
+    // 1. Manage Active Visual Pill Highlighting
+    const allPills = document.querySelectorAll('.category-node-pill');
+    allPills.forEach(p => p.classList.remove('active-pill'));
+    clickedElement.classList.add('active-pill');
+
+    // 2. Cross-Page Redirection Handling Rule
+    if (window.location.pathname !== '/') {
+        window.location.href = '/?brand=' + brandKeyword;
+        return;
+    }
+
+    // 3. Instant On-Screen Text Parsing Engine
+    const targetProductCards = document.querySelectorAll('.product-card');
+    targetProductCards.forEach(card => {
+        // Extract raw visible text content inside product item boundaries
+        const cardInnerContentText = card.innerText.toLowerCase();
+        
+        if (brandKeyword === 'all' || cardInnerContentText.includes(brandKeyword.toLowerCase())) {
+            card.style.display = 'block'; // Symmetrical match entry view
+        } else {
+            card.style.display = 'none';  // Mask unselected data sets
+        }
+    });
+}
+
+// Read and decode parameters if routed from alternative internal directories
+document.addEventListener('DOMContentLoaded', () => {
+    const routingURLParams = new URLSearchParams(window.location.search);
+    const assignedBrandParameter = routingURLParams.get('brand');
+    if (assignedBrandParameter) {
+        const automatedTargetPill = document.querySelector(`[onclick*="'${assignedBrandParameter}'"]`);
+        if (automatedTargetPill) {
+            automatedTargetPill.click();
+        }
+    }
+});
+</script>
         </body>
-</html> 
+</html>
