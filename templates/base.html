@@ -218,6 +218,89 @@ html, body {
             font-size: 10px;
         }
     }
+    /* ================================================================= */
+/* 🌌 BASE.HTML AUTOMATIC LUXURY SLIDER STYLE PACK */
+/* ================================================================= */
+.luxury-deck-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 10px auto 25px auto;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* 🏷️ HORIZONTAL TRAY STYLING */
+.luxury-category-horizontal-tray {
+    display: flex;
+    gap: 22px;
+    padding: 12px 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+.luxury-category-horizontal-tray::-webkit-scrollbar { display: none; }
+
+.category-node-pill {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    min-width: 65px;
+}
+.pill-avatar-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid #ddd;
+    transition: transform 0.2s;
+}
+.category-node-pill span {
+    font-size: 11px;
+    margin-top: 5px;
+    color: #333;
+    font-weight: 500;
+}
+.category-node-pill.active-pill span { color: #b39246; font-weight: 600; }
+.category-node-pill.active-pill .pill-avatar-icon { border-color: #b39246; transform: scale(1.05); }
+
+/* 🎞️ CAROUSEL WITH PEEK CUTOUTS EFFECT */
+.luxury-carousel-viewport {
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    overflow: hidden;
+}
+.luxury-carousel-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+}
+.carousel-slide-item {
+    flex: 0 0 82%; /* Image side edges visibility logic */
+    margin: 0 2%;
+    height: 260px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    background: #000;
+}
+.carousel-slide-item img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.carousel-indicator-dots {
+    display: flex; justify-content: center; gap: 6px; margin-top: 12px;
+}
+.c-matrix-dot {
+    width: 6px; height: 6px; background: rgba(0,0,0,0.15); border-radius: 50%; cursor: pointer; transition: all 0.3s;
+}
+.c-matrix-dot.active-c-dot { background: #b39246; transform: scale(1.2); }
+
+@media (max-width: 768px) {
+    .carousel-slide-item { height: 155px !important; flex: 0 0 84% !important; margin: 0 1.5% !important; }
+}
 </style>
         </nav>
     </header>
@@ -277,6 +360,54 @@ html, body {
     </div>
 
     <main>
+        <div class="luxury-deck-wrapper">
+
+    <div class="luxury-category-horizontal-tray">
+        <div class="category-node-pill active-pill">
+            <div class="pill-avatar-icon" style="background-image: url('/static/images/slider1.jpeg');"></div>
+            <span>For You</span>
+        </div>
+        <div class="category-node-pill">
+            <div class="pill-avatar-icon" style="background-image: url('/static/images/slider2.jpeg');"></div>
+            <span>Rolex</span>
+        </div>
+        <div class="category-node-pill">
+            <div class="pill-avatar-icon" style="background-image: url('/static/images/slider3.jpeg');"></div>
+            <span>Omega</span>
+        </div>
+        <div class="category-node-pill">
+            <div class="pill-avatar-icon" style="background-image: url('/static/images/slider4.jpeg');"></div>
+            <span>Hublot</span>
+        </div>
+        <div class="category-node-pill">
+            <div class="pill-avatar-icon" style="background-image: url('/static/images/sslider5.jpeg');"></div>
+            <span>Rado</span>
+        </div>
+        <div class="category-node-pill">
+            <div class="pill-avatar-icon" style="background-image: url('/static/images/slider6.jpeg');"></div>
+            <span>Casio</span>
+        </div>
+        <div class="category-node-pill">
+            <div class="pill-avatar-icon" style="background-image: url('/static/images/slider7.jpeg');"></div>
+            <span>Seiko</span>
+        </div>
+    </div>
+
+    <div class="luxury-carousel-viewport">
+        <div class="luxury-carousel-track" id="luxuryCarouselTrack">
+            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider1.jpeg') }}"></div>
+            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider2.jpeg') }}"></div>
+            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider3.jpeg') }}"></div>
+            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider4.jpeg') }}"></div>
+            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/sslider5.jpeg') }}"></div>
+            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider6.jpeg') }}"></div>
+            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider7.jpeg') }}"></div>
+            <div class="carousel-slide-item"><img src="{{ url_for('static', filename='images/slider8.jpeg') }}"></div>
+        </div>
+        <div class="carousel-indicator-dots" id="carouselIndicatorDots"></div>
+    </div>
+
+</div> 
         {% block content %}{% endblock %}
     </main>
 
@@ -615,6 +746,49 @@ function toggleMobileMenu() {
         drawer.classList.toggle('drawer-active');
     }
 }
+</script> 
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const trackBlock = document.getElementById('luxuryCarouselTrack');
+    const itemSlides = document.querySelectorAll('.carousel-slide-item');
+    const dotsWrapBlock = document.getElementById('carouselIndicatorDots');
+    let baseCurrentIdx = 0;
+    let baseCarouselTimer;
+
+    if(trackBlock && itemSlides.length > 0) {
+        // Dynamically create navigation dots
+        itemSlides.forEach((_, idx) => {
+            const dotObj = document.createElement('div');
+            dotObj.classList.add('c-matrix-dot');
+            if(idx === 0) dotObj.classList.add('active-c-dot');
+            dotObj.addEventListener('click', () => jumpToBaseSlider(idx));
+            dotsWrapBlock.appendChild(dotObj);
+        });
+
+        const globalDots = document.querySelectorAll('.c-matrix-dot');
+
+        function runBaseCarousel() {
+            globalDots[baseCurrentIdx].classList.remove('active-c-dot');
+            baseCurrentIdx = (baseCurrentIdx + 1) % itemSlides.length;
+            
+            const layoutWidthFactor = window.innerWidth <= 768 ? 87 : 86;
+            trackBlock.style.transform = `translateX(-${baseCurrentIdx * layoutWidthFactor}%)`;
+            globalDots[baseCurrentIdx].add('active-c-dot');
+        }
+
+        function jumpToBaseSlider(targetIdx) {
+            clearInterval(baseCarouselTimer);
+            globalDots[baseCurrentIdx].classList.remove('active-c-dot');
+            baseCurrentIdx = targetIdx;
+            const layoutWidthFactor = window.innerWidth <= 768 ? 87 : 86;
+            trackBlock.style.transform = `translateX(-${baseCurrentIdx * layoutWidthFactor}%)`;
+            globalDots[baseCurrentIdx].classList.add('active-c-dot');
+            baseCarouselTimer = setInterval(runBaseCarousel, 4000);
+        }
+
+        baseCarouselTimer = setInterval(runBaseCarousel, 4000); // 4 Seconds Auto Rotation Loop
+    }
+});
 </script> 
         </body>
 </html> 
