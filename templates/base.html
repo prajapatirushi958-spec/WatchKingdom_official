@@ -7,29 +7,29 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div id="loader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.3s ease;">
-    <img src="{{ url_for('static', filename='images/wac.png') }}" alt="Watch Kingdom" style="width: 180px; animation: pulse 1.2s infinite;">
+    <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; justify-content: center; align-items: center; z-index: 99999; transition: opacity 0.5s ease;">
+    <img src="{{ url_for('static', filename='images/wac.png') }}" alt="Watch Kingdom" style="width: 180px; opacity: 0; animation: fadeInOut 1.5s ease-in-out forwards;">
 </div>
 
 <style>
-    @keyframes pulse { 
-        0% { opacity: 0.3; transform: scale(1); } 
-        50% { opacity: 1; transform: scale(1.05); } /* Thoda dynamic scaling bhi add kiya hai texture enhance karne ke liye */
-        100% { opacity: 0.3; transform: scale(1); } 
+    @keyframes fadeInOut {
+        0% { opacity: 0; transform: scale(0.9); }
+        50% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(1.1); }
     }
 </style>
 
 <script>
     window.addEventListener("load", function() {
-        // Website load hone ke theek 2 second baad ye reveal karega (jaisa aapne pehle kaha tha)
-        setTimeout(function(){ 
-            const loader = document.getElementById("loader");
-            loader.style.opacity = "0"; // Faster fade-out
-            setTimeout(function(){ loader.style.display = "none"; }, 300); // 0.3s ke exit ke baad completely hide
-        }, 2000); 
+        // Website load hote hi fast reveal ke liye time 1.5 seconds set kiya hai
+        setTimeout(function(){
+            const splash = document.getElementById("splash-screen");
+            splash.style.opacity = "0";
+            setTimeout(function(){ splash.style.display = "none"; }, 500);
+        }, 1500); 
     });
 </script> 
-    <header style="background: #0f0f0f; border-bottom: 1px solid #161616; position: sticky; top: 0; width: 100%; z-index: 9999;">
+        <header style="background: #0f0f0f; border-bottom: 1px solid #161616; position: sticky; top: 0; width: 100%; z-index: 9999;">
         <div style="max-width: 1300px; margin: 0 auto; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
             
             <div class="logo">
